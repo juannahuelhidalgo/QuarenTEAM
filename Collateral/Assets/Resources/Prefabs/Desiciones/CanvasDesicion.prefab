@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Si
 --- !u!1 &4524177560823661744
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ RectTransform:
   m_GameObject: {fileID: 5676442576252455877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.0800905, y: 1.5361, z: 1}
   m_Children:
   - {fileID: 7621164072695047288}
   m_Father: {fileID: 2796593053190522981}
@@ -489,4 +489,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: No
