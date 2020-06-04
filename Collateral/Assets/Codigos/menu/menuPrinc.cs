@@ -58,6 +58,11 @@ public class menuPrinc : MonoBehaviour
     }
 
 
+    public bool esMenu()
+    {
+        return EsMenu;
+    }
+
     IEnumerator mostrar()
     {
 
