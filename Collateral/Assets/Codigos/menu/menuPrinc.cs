@@ -21,7 +21,7 @@ public class menuPrinc : MonoBehaviour
 
     void Update()
     {
-        if (semana <= 5) StartCoroutine(mostrar());
+        if (semana <= final) StartCoroutine(mostrar());
 
     }
 
@@ -108,7 +108,6 @@ public class menuPrinc : MonoBehaviour
                     Debug.Log("semana = " + semana);
                     break;
             }
-
 
         }
     }
