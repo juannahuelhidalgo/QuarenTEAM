@@ -11,7 +11,7 @@ public class transicionTEST
 {
     private Canvas canvas;
     private menuPrinc noticias;
-    private gif gif;
+  //  private gif gif;
 
     //Aqui se pondra lo que se inicia/instancia con el comienzo de cada test
     [SetUp]
