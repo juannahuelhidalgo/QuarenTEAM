@@ -183,6 +183,11 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1140686178979455031, guid: 5242a230078fdad41beecbf97b131659,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1492244207964361722, guid: 5242a230078fdad41beecbf97b131659,
         type: 3}
       propertyPath: m_IsActive
@@ -358,6 +363,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5413485026106310647, guid: 5242a230078fdad41beecbf97b131659,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5547882567970644110, guid: 5242a230078fdad41beecbf97b131659,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -422,6 +432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -11.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629373483733661345, guid: 5242a230078fdad41beecbf97b131659,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 6811914345315504376, guid: 5242a230078fdad41beecbf97b131659,
         type: 3}

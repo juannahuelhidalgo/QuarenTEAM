@@ -11,15 +11,12 @@ public class disparadorDeEventos : MonoBehaviour
     private seguidorDeMouse mouse;
     //Me va a permitir setear la posición de la camara
     private visorDeObjetos view;
-    // Update is called once per frame
-    private AdministradorDocumentos administradorDeDocumentos;
    
     //Obtiene las referencias de las otras clases que necesita para funcionar
     public void Awake()
     {
         mouse = this.GetComponent<seguidorDeMouse>();
         view = this.GetComponent<visorDeObjetos>();
-        administradorDeDocumentos = this.GetComponent<AdministradorDocumentos>();
 
     }
     private void Start()

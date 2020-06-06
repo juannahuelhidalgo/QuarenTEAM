@@ -14,11 +14,10 @@ public class AdministradorDocumentos : MonoBehaviour
     Text enfermedades;
     Text sexo;
     Text viajo;
-    int index;
     datosPacientes data;
     public bool LlegoEnfermero = true;
     GameObject doc;
-    GameObject canvas;
+    Canvas canvas;
 
     private void Awake()
     {
@@ -31,7 +30,7 @@ public class AdministradorDocumentos : MonoBehaviour
         viajo = GameObject.Find("RespViajo").GetComponent<Text>();
         data = GameObject.Find("Documento").GetComponent<datosPacientes>();
         doc = GameObject.Find("Documento");
-        canvas = GameObject.Find("CanvasDocumentos");
+        canvas = GameObject.Find("CanvasDocumentos").GetComponent<Canvas>();
         generarDocumento();
     }
 
@@ -69,6 +68,6 @@ public class AdministradorDocumentos : MonoBehaviour
 
     public void mirando(bool mirar)
     {
-        canvas.SetActive(mirar);
+        canvas.enabled = mirar;
     }
 }
