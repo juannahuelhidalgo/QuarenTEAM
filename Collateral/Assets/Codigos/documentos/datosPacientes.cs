@@ -6,7 +6,7 @@ using Random = System.Random;
 using System.Diagnostics;
 
 //En esta clase se guarda la informacion para generar pacientes y contiene metodos para accecer a esta
-public class patientsData : MonoBehaviour
+public class datosPacientes : MonoBehaviour
 {
     private Queue<string> nombres;
     private Queue<string> nacionalidades;
@@ -14,7 +14,7 @@ public class patientsData : MonoBehaviour
     private Queue<string> enfermedades;
     private string[] sexo = new string[2];
 
-    public patientsData()
+    public datosPacientes()
     {
 
         nombres = new Queue<string>();

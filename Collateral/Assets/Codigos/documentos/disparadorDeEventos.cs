@@ -2,31 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class eventTriggerer : MonoBehaviour
+public class disparadorDeEventos : MonoBehaviour
 {
     private float timer;
     //me permite saber si estoy viendo el documento
     bool viewingDocument;
     //me permite saber sobre que puto objeto esta el mouse
-    private MouseTracker mouse;
+    private seguidorDeMouse mouse;
     //Me va a permitir setear la posición de la camara
-    private ObjectViewer view;
+    private visorDeObjetos view;
     // Update is called once per frame
-    private AdministradorDocumentos documento;
+    private AdministradorDocumentos administradorDeDocumentos;
    
     //Obtiene las referencias de las otras clases que necesita para funcionar
     public void Awake()
     {
-        mouse = this.GetComponent<MouseTracker>();
-        view = this.GetComponent<ObjectViewer>();
-        documento = this.GetComponent<AdministradorDocumentos>();
+        mouse = this.GetComponent<seguidorDeMouse>();
+        view = this.GetComponent<visorDeObjetos>();
+        administradorDeDocumentos = this.GetComponent<AdministradorDocumentos>();
 
     }
     private void Start()
     {
         viewingDocument = false;
         timer = 0.0f;
-        mouse = this.GetComponent<MouseTracker>();
+        mouse = this.GetComponent<seguidorDeMouse>();
     }
     //timer evita que se hagan multiples cambios de camara por click, ya que un click puede durar mas de una llamada de update
     void Update()
@@ -49,10 +49,12 @@ public class eventTriggerer : MonoBehaviour
                 viewingDocument = false;
             }
         }
+        //esta funcion permitia asociar un cambio de paciente a un click sobre un obj de tag "CambiarPaciente"
+        /*
         if (Input.GetMouseButton(0) && mouse.getObjectUnder() == "CambiarPaciente" && timer > 0.3)
         {
             documento.generarDocumento();
             timer = 0.0f;
-        }
+        }*/
     }
 }

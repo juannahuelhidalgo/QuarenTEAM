@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
@@ -16,13 +15,12 @@ public class AdministradorDocumentos : MonoBehaviour
     Text sexo;
     Text viajo;
     int index;
-    patientsData data;
+    datosPacientes data;
     public bool LlegoEnfermero = true;
     GameObject doc;
     GameObject canvas;
-    bool mirando;
 
-    private void Start()
+    private void Awake()
     {
         
         nombre = GameObject.Find("RespNombre").GetComponent<Text>();
@@ -31,11 +29,9 @@ public class AdministradorDocumentos : MonoBehaviour
         enfermedades = GameObject.Find("RespEnfermedad").GetComponent<Text>();
         sexo = GameObject.Find("RespSexo").GetComponent<Text>();
         viajo = GameObject.Find("RespViajo").GetComponent<Text>();
-        data = GameObject.Find("Documento").GetComponent<patientsData>();
-        doc = GameObject.FindWithTag("Documento");
+        data = GameObject.Find("Documento").GetComponent<datosPacientes>();
+        doc = GameObject.Find("Documento");
         canvas = GameObject.Find("CanvasDocumentos");
-
-
         generarDocumento();
     }
 
@@ -44,14 +40,6 @@ public class AdministradorDocumentos : MonoBehaviour
         if (LlegoEnfermero)
         {
             doc.SetActive(true);
-            if (mirando)
-            {
-                canvas.SetActive(true);
-            }
-            else
-            {
-                canvas.SetActive(false);
-            }
         }
         else
         {
@@ -79,8 +67,8 @@ public class AdministradorDocumentos : MonoBehaviour
         LlegoEnfermero = llego;
     }
 
-    public void setMirando(bool mirar)
+    public void mirando(bool mirar)
     {
-        mirando = mirar;
+        canvas.SetActive(mirar);
     }
 }

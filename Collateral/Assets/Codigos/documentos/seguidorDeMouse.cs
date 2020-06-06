@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseTracker : MonoBehaviour
+public class seguidorDeMouse : MonoBehaviour
 {
     string objectUnderMouse;
 
-    // Update is called once per frame
-    public MouseTracker()
-    {
-    }
+
     void Update()
     {
         //nos crea un rayo utilizando dos puntos, la posición de la camara y la posición del mouse sobre el plano que muestra la camara

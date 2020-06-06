@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 //Esta clase se encarga mover la camara dependiendo de que objeto se toque por ahora solo esta implementada para ver el documento
-public class ObjectViewer : MonoBehaviour
+public class visorDeObjetos : MonoBehaviour
 {
 
     private Vector3 offsetP1;
     private Vector3 offsetP2;
     private Vector3 offsetR1;
     private Vector3 offsetR2;
-    //public GameObject camposDocumento; -> Se ve que esta referencia nunca es usada
     private Transform documento;
+    private AdministradorDocumentos administradorDeDocumentos;
     //Nos muestra el documento
     //Obtiene las referencias que necesita para funcionar y ubica la main camera en el escritorio
     public void Awake()
@@ -22,6 +22,8 @@ public class ObjectViewer : MonoBehaviour
         offsetR1 = new Vector3(10.5f, -176.35f, 0);
         documento = this.GetComponent<Transform>();
         Camera.main.transform.SetPositionAndRotation(documento.position + offsetP1, Quaternion.Euler(offsetR1));
+        administradorDeDocumentos = this.GetComponent<AdministradorDocumentos>();
+        administradorDeDocumentos.mirando(false);
     }
     //nos lleva a la posicion para mirar el documento
 
@@ -37,13 +39,13 @@ public class ObjectViewer : MonoBehaviour
     {
         Camera.main.transform.SetPositionAndRotation(documento.position + offsetP2, Quaternion.Euler(offsetR2));
         //camposDocumento.SetActive(true); 
-        this.GetComponent<AdministradorDocumentos>().setMirando(true); //Llama al metodo setMirando del objeto AmdinistradorHUD para que active el canvas del doc
+        administradorDeDocumentos.mirando(true); //Llama al metodo setMirando del objeto AmdinistradorHUD para que active el canvas del doc
     }
     //Nos lleva a la posicion antes de mirar el documento
     public void previousView()
     {
         Camera.main.transform.SetPositionAndRotation(documento.position + offsetP1, Quaternion.Euler(offsetR1));
-        this.GetComponent<AdministradorDocumentos>().setMirando(false);//Llama al metodo setMirando del objeto AmdinistradorHUD para que desactive el canvas del doc
+        this.GetComponent<AdministradorDocumentos>().mirando(false);//Llama al metodo setMirando del objeto AmdinistradorHUD para que desactive el canvas del doc
         //camposDocumento.SetActive(false);
     }
 }
