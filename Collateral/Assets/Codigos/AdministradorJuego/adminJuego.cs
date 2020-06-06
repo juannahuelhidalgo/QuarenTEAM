@@ -22,9 +22,15 @@ public class adminJuego : MonoBehaviour
         if (getNumeroEscenaActual() == 0 || getNumeroEscenaActual() == 1)
         {
             semanaActual++;
-            Debug.Log("la semana actual es " + semanaActual);
+            Debug.Log("la semana actual es (primer if) " + semanaActual);
+            SceneManager.LoadScene(EscenaActual + 1);
         }
-        SceneManager.LoadScene(EscenaActual + 1);
+        if (getNumeroEscenaActual() == 2)
+        {
+            semanaActual++;
+            Debug.Log("la semana actual es (segundo if) " + semanaActual);
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void cargarEscenaAnterior()
