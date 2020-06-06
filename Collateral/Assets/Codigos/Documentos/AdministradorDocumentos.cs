@@ -18,6 +18,9 @@ public class AdministradorDocumentos : MonoBehaviour
     public bool LlegoEnfermero = true;
     GameObject doc;
     Canvas canvas;
+    Canvas canvasrestricciones;
+    GameObject restriccion;
+    int semanaActual;
 
     private void Awake()
     {
@@ -31,6 +34,10 @@ public class AdministradorDocumentos : MonoBehaviour
         data = GameObject.Find("Documento").GetComponent<datosPacientes>();
         doc = GameObject.Find("Documento");
         canvas = GameObject.Find("CanvasDocumentos").GetComponent<Canvas>();
+        canvasrestricciones = GameObject.Find("CanvasRestricciones").GetComponent<Canvas>();
+
+        semanaActual = 1;
+        setRestricciones();
         generarDocumento();
     }
 
@@ -69,5 +76,21 @@ public class AdministradorDocumentos : MonoBehaviour
     public void mirando(bool mirar)
     {
         canvas.enabled = mirar;
+        canvasrestricciones.enabled = mirar;
+    }
+
+    public void setRestricciones()
+    {
+        for(int i=1;i<=5;i++)
+        {
+            if(i == semanaActual)
+            {
+                UnityEngine.Debug.Log("Entre al if ya que i= " + i + " es igual a la semana: " + semanaActual);
+                string numero = i + "";
+                restriccion = GameObject.Find("Semana" + numero);
+                restriccion.SetActive(true);
+            }
+        }
+       
     }
 }
