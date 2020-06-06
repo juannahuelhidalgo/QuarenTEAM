@@ -32,7 +32,7 @@ namespace Tests
 
         //1
         //el metodo chequea si se estan almacenando correctamente las respuestas en base a controlar su veracidad
-        /* [UnityTest]
+         [UnityTest]
          public IEnumerator TestDesicionesSi()
          {
              //supone una primer respuesta correcta
@@ -49,7 +49,7 @@ namespace Tests
 
              // yield return new WaitForSeconds (20);
              yield return null;
-         }*/
+         }
 
         //2
         //el metodo chequea si se estan almacenando correctamente las respuestas en base a controlar su veracidad

@@ -25,7 +25,7 @@ public class AdministradorDesiciones : MonoBehaviour
     {
 
         canvas = GameObject.FindWithTag("canvasDesiciones");
-        admDOC = GameObject.Find("Documento");
+        admDOC = GameObject.FindWithTag("Documento");
         admin = admDOC.GetComponent<AdministradorDocumentos>();
 
         if(desicionesTomadas == 3)
