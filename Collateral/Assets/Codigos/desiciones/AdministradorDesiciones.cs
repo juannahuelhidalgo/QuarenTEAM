@@ -4,16 +4,7 @@ using UnityEngine;
 
 public class AdministradorDesiciones : MonoBehaviour
 {
-    //cuestiones de visualizacion explicadas en la clase AdministradorDocumentos
-    //public bool LlegoMedico = true;
     GameObject canvas;
-    //bool mirando;
-
-    //semana 1: no es necesario otro documento
-    //semana 2: cierre de aeropuestos
-    //semana 3: no se permiten jovenes
-    //semana 4: no se permiten extranjeros
-    //semana 5: no se permite nadie que no sea factor de riesgo
     int[] RespEsperadas = new int[] { 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 }; //No ha sido chequeado
     static int[] RespTomadas = new int[15];
     //List<Observador> observadores = new List<Observador>();
@@ -21,11 +12,12 @@ public class AdministradorDesiciones : MonoBehaviour
     private static int pacientesAtendidos = 0;
     int correctas = 0;
     int incorrectas = 0;
-   // int desicionesTomadas = 0; quiza esta variable son los pacientes atendidos o hace referencia a lo global?
+    private int desicionesTomadas = 0; 
     int numeroMostrar = 0;
 
 
-    GameObject administradorDOC;
+    GameObject admDOC;
+    AdministradorDocumentos admin;
 
 
     // busca los objetos con el tag
@@ -33,7 +25,13 @@ public class AdministradorDesiciones : MonoBehaviour
     {
 
         canvas = GameObject.FindWithTag("canvasDesiciones");
-        administradorDOC = GameObject.Find("Documentos");
+        admDOC = GameObject.Find("Documento");
+        admin = admDOC.GetComponent<AdministradorDocumentos>();
+
+        if(desicionesTomadas == 3)
+        {
+            desicionesTomadas = 0;
+        }
 
     }
 
@@ -41,22 +39,16 @@ public class AdministradorDesiciones : MonoBehaviour
     //Chequea si se esta mirando el documento para mostrar las posibles desiciones
     void Update()
     {
-     /*   if (administradorDOC.GetComponent<AdministradorDocumentos>().getMirando()) //Se fija si estas mirando el documento, y en base a eso activa o desactiva el canvas
-        {
-            canvas.SetActive(true);
-        }
-        else
-        {
-            canvas.SetActive(false);
-        }*/
+      
     }
 
 
     //algoritmo si se decide que si
     public void Si()
     {
-        if (pacientesAtendidos <= 3)
+        if (desicionesTomadas < 3)
         {
+            desicionesTomadas++;
             pacientesAtendidos++;
             Debug.Log("entre al if");
             lugarArray++;
@@ -64,17 +56,18 @@ public class AdministradorDesiciones : MonoBehaviour
             RespTomadas[lugarArray] = 1;
             compararDesicion();
             Debug.Log("respuesta si, guardada");
-            GameObject.Find("Documentos").GetComponent<AdministradorDocumentos>().generarDocumento();
+            admin.generarDocumento();
         }
-        else { Debug.Log("no se puede mas master"); }
+        else { Debug.Log("no se puede mas"); }
     }
 
 
     //algoritmo si se decide que no
     public void No()
     {
-        if (pacientesAtendidos <= 3)
+        if (desicionesTomadas < 3)
         {
+            desicionesTomadas++;
             pacientesAtendidos++;
             Debug.Log("entre al if");
             lugarArray++;
@@ -82,9 +75,9 @@ public class AdministradorDesiciones : MonoBehaviour
             RespTomadas[lugarArray] = 0;
             compararDesicion();
             Debug.Log("respuesta no, guardada");
-            GameObject.Find("Documentos").GetComponent<AdministradorDocumentos>().generarDocumento();
+            admin.generarDocumento();
         }
-        else { Debug.Log("no se puede mas master"); }
+        else { Debug.Log("no se puede mas"); }
     }
 
 

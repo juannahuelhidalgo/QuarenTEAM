@@ -19,6 +19,7 @@ public class AdministradorDocumentos : MonoBehaviour
     GameObject doc;
     Canvas canvas;
     Canvas canvasrestricciones;
+    Canvas desiciones;
  
 
     private void Awake()
@@ -34,6 +35,8 @@ public class AdministradorDocumentos : MonoBehaviour
         doc = GameObject.Find("Documento");
         canvas = GameObject.Find("CanvasDocumentos").GetComponent<Canvas>();
         canvasrestricciones = GameObject.Find("CanvasRestricciones").GetComponent<Canvas>();
+        desiciones = GameObject.Find("CanvasDesicion").GetComponent<Canvas>();
+
         generarDocumento();
     }
 
@@ -73,6 +76,7 @@ public class AdministradorDocumentos : MonoBehaviour
     {
         canvas.enabled = mirar;
         canvasrestricciones.enabled = mirar;
+        desiciones.enabled = mirar;
     }
 
 }
