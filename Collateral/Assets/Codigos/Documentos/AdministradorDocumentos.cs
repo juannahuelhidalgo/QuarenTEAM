@@ -24,7 +24,7 @@ public class AdministradorDocumentos : MonoBehaviour
 
     private void Start()
     {
-
+        
         nombre = GameObject.Find("RespNombre").GetComponent<Text>();
         edad = GameObject.Find("RespEdad").GetComponent<Text>();
         nacionalidad = GameObject.Find("RespNacionalidad").GetComponent<Text>();
@@ -33,7 +33,7 @@ public class AdministradorDocumentos : MonoBehaviour
         viajo = GameObject.Find("RespViajo").GetComponent<Text>();
         data = GameObject.Find("Documento").GetComponent<patientsData>();
         doc = GameObject.FindWithTag("Documento");
-        canvas = GameObject.FindWithTag("CanvasDocumentos");
+        canvas = GameObject.Find("CanvasDocumentos");
 
 
         generarDocumento();
