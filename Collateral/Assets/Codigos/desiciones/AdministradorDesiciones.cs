@@ -16,10 +16,14 @@ public class AdministradorDesiciones : MonoBehaviour
     //semana 5: no se permite nadie que no sea factor de riesgo
     int[] RespEsperadas = new int[] { 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 }; //No ha sido chequeado
     static int[] RespTomadas = new int[15];
+    //List<Observador> observadores = new List<Observador>();
     static int lugarArray = -1;
     private static int pacientesAtendidos = 0;
     int correctas = 0;
     int incorrectas = 0;
+   // int desicionesTomadas = 0; quiza esta variable son los pacientes atendidos o hace referencia a lo global?
+    int numeroMostrar = 0;
+
 
     GameObject administradorDOC;
 
@@ -28,7 +32,7 @@ public class AdministradorDesiciones : MonoBehaviour
     void Start()
     {
 
-        canvas = GameObject.FindWithTag("CanvasDesiciones");
+        canvas = GameObject.FindWithTag("canvasDesiciones");
        // administradorDOC = GameObject.Find("mostrarPacientes");
 
     }
@@ -120,6 +124,36 @@ public class AdministradorDesiciones : MonoBehaviour
     public int Incorrectas()
     {
         return incorrectas;
+    }
+
+    //este metodo notificara a los observadores
+    public void notificar()
+    {
+
+          /*  for (int i = 0; i < observadores.Count; i++)
+              {
+                  observadores[i].OnNotify();
+              }*/
+
+    }
+
+    //este metodo dejara suscribir al observador
+    public void suscribir(/*Observador n*/)
+    {
+        //observadores.Add(n);
+    }
+
+    //este metodo quitara el observador indicado
+    public void quitar(/*Observador n*/)
+    {
+       // observador.Remove(n);
+    }
+
+    //este metodo setea la estrategia a mostrar
+    public void setEstrategia()
+    {
+
+
     }
 
 }
