@@ -57,6 +57,7 @@ public class AdministradorDesiciones : MonoBehaviour
             compararDesicion();
             Debug.Log("respuesta si, guardada");
             admin.generarDocumento();
+            
         }
         else { Debug.Log("no se puede mas"); }
     }
