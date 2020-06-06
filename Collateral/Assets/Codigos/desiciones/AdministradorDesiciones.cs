@@ -50,14 +50,15 @@ public class AdministradorDesiciones : MonoBehaviour
         {
             desicionesTomadas++;
             pacientesAtendidos++;
-            Debug.Log("entre al if");
+            //Debug.Log("entre al if");
             lugarArray++;
-            Debug.Log("sumo lugar");
+           // Debug.Log("sumo lugar");
             RespTomadas[lugarArray] = 1;
             compararDesicion();
-            Debug.Log("respuesta si, guardada");
+            //Debug.Log("respuesta si, guardada");
             admin.generarDocumento();
-            
+             Debug.Log("genere documento");
+
         }
         else { Debug.Log("no se puede mas"); }
     }
@@ -70,13 +71,14 @@ public class AdministradorDesiciones : MonoBehaviour
         {
             desicionesTomadas++;
             pacientesAtendidos++;
-            Debug.Log("entre al if");
+           // Debug.Log("entre al if");
             lugarArray++;
-            Debug.Log("sumo lugar");
+            //Debug.Log("sumo lugar");
             RespTomadas[lugarArray] = 0;
             compararDesicion();
-            Debug.Log("respuesta no, guardada");
+          //  Debug.Log("respuesta no, guardada");
             admin.generarDocumento();
+            Debug.Log("genere documento");
         }
         else { Debug.Log("no se puede mas"); }
     }
@@ -88,9 +90,9 @@ public class AdministradorDesiciones : MonoBehaviour
         if (RespTomadas[lugarArray].Equals(RespEsperadas[lugarArray]))
         {
             correctas++;
-            Debug.Log("correcta");
+          //  Debug.Log("correcta");
         }
-        else { incorrectas++; Debug.Log("incorrecta"); }
+        else { incorrectas++;/* Debug.Log("incorrecta");*/ }
     }
 
 
