@@ -33,7 +33,7 @@ public class AdministradorDesiciones : MonoBehaviour
     {
 
         canvas = GameObject.FindWithTag("canvasDesiciones");
-       // administradorDOC = GameObject.Find("mostrarPacientes");
+        administradorDOC = GameObject.Find("Documentos");
 
     }
 
@@ -64,7 +64,7 @@ public class AdministradorDesiciones : MonoBehaviour
             RespTomadas[lugarArray] = 1;
             compararDesicion();
             Debug.Log("respuesta si, guardada");
-          //  GameObject.Find("mostrarPacientes").GetComponent<AdministradorDocumentos>().generarDocumento();
+            GameObject.Find("Documentos").GetComponent<AdministradorDocumentos>().generarDocumento();
         }
         else { Debug.Log("no se puede mas master"); }
     }
@@ -82,7 +82,7 @@ public class AdministradorDesiciones : MonoBehaviour
             RespTomadas[lugarArray] = 0;
             compararDesicion();
             Debug.Log("respuesta no, guardada");
-         //   GameObject.Find("mostrarPacientes").GetComponent<AdministradorDocumentos>().generarDocumento();
+            GameObject.Find("Documentos").GetComponent<AdministradorDocumentos>().generarDocumento();
         }
         else { Debug.Log("no se puede mas master"); }
     }
