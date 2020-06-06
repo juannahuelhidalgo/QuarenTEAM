@@ -303,6 +303,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -71.80001
       objectReference: {fileID: 0}
+    - target: {fileID: 3418194438872773678, guid: 5242a230078fdad41beecbf97b131659,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3749740749852398203, guid: 5242a230078fdad41beecbf97b131659,
         type: 3}
       propertyPath: m_Text
@@ -327,6 +332,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828714008526591756, guid: 5242a230078fdad41beecbf97b131659,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4906098205542461303, guid: 5242a230078fdad41beecbf97b131659,
         type: 3}
@@ -662,7 +672,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651670777}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &651670779
 Camera:
   m_ObjectHideFlags: 0

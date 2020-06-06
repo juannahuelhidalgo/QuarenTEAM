@@ -9,14 +9,18 @@ namespace Tests
     public class desicionesTEST
     {
         GameObject gameGameObject;
+        GameObject documentos;
         AdministradorDesiciones adm;
+        AdministradorDocumentos admin;
 
         //Aqui se pondra lo que se inicia/instancia con el comienzo de cada test
         [SetUp]
         public void Setup()
         {
             //se instancia el raw image correspondiente
-            gameGameObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/desiciones/mostrarPacientes"));
+            gameGameObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Desiciones/mostrarPacientes"));
+            documentos = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Documentos/Documento"));
+            admin = documentos.GetComponent<AdministradorDocumentos>();
             //se obtiene el codigo
             adm = gameGameObject.GetComponent<AdministradorDesiciones>();
         }
