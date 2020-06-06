@@ -10,6 +10,7 @@ namespace Tests
     {
         GameObject gameGameObject;
         GameObject documentos;
+        GameObject DOM;
         AdministradorDesiciones adm;
         AdministradorDocumentos admin;
 
@@ -18,9 +19,13 @@ namespace Tests
         public void Setup()
         {
             //se instancia el raw image correspondiente
-            gameGameObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Desiciones/mostrarPacientes"));
-            documentos = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Documentos/Documento"));
+            DOM = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Escenas/Juego"));
+           // gameGameObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Desiciones/mostrarPacientes"));
+            gameGameObject = GameObject.Find("mostrarPacientes");
+            // documentos = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Documentos/Documento"));
+            documentos = GameObject.Find("Documento");
             admin = documentos.GetComponent<AdministradorDocumentos>();
+ 
             //se obtiene el codigo
             adm = gameGameObject.GetComponent<AdministradorDesiciones>();
         }
@@ -63,6 +68,14 @@ namespace Tests
 
             // yield return new WaitForSeconds (20);
             yield return null;
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            GameObject.Destroy(DOM);
+            GameObject.Destroy(gameGameObject);
+            GameObject.Destroy(documentos);
         }
 
     }

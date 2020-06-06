@@ -24,7 +24,6 @@ public class AdministradorDocumentos : MonoBehaviour
 
     private void Awake()
     {
-        
         nombre = GameObject.Find("RespNombre").GetComponent<Text>();
         edad = GameObject.Find("RespEdad").GetComponent<Text>();
         nacionalidad = GameObject.Find("RespNacionalidad").GetComponent<Text>();
@@ -36,7 +35,6 @@ public class AdministradorDocumentos : MonoBehaviour
         canvas = GameObject.Find("CanvasDocumentos").GetComponent<Canvas>();
         canvasrestricciones = GameObject.Find("CanvasRestricciones").GetComponent<Canvas>();
         desiciones = GameObject.Find("CanvasDesicion").GetComponent<Canvas>();
-
         generarDocumento();
     }
 
