@@ -18,6 +18,8 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
 
     GameObject admDOC;
     AdministradorDocumentos admin;
+    GameObject AdmJuego;
+    adminJuego juego;
 
 
     //----------------------------------------------------------------------------------------------------------
@@ -38,10 +40,13 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         admDOC = GameObject.Find("Documento");
         admin = admDOC.GetComponent<AdministradorDocumentos>();
 
-       /* if(desicionesTomadas == 3)
-        {
-            desicionesTomadas = 0;
-        }*/
+        AdmJuego = GameObject.Find("adminJuegos");
+        juego = AdmJuego.GetComponent<adminJuego>();
+
+         if(desicionesTomadas == 3)
+         {
+             desicionesTomadas = 0;
+         }
 
     }
 
@@ -173,11 +178,23 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     {
         if(pacientesAtendidos == 3)
         {
-            //Acá deberia ir el metodo de ADMINJUEGO que se encarga de cargar la escena de trancisiones
+            StartCoroutine("esperaClasica");
         }
         else
         {
             admin.generarDocumento();
+        }
+    }
+
+    IEnumerator esperaClasica()
+    {
+       // canvas.SetActive(false);
+        bool espera = true;
+        while (espera)
+        {
+            yield return new WaitForSeconds(3);
+            juego.cargarEscenaSiguiente();
+            espera = false;
         }
     }
 
