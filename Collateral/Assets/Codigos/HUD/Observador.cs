@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ObserverInterface
+public interface Observador 
 {
-    void actualizar(float numeroamostrar);
+    void mostrar(float num);
 }
