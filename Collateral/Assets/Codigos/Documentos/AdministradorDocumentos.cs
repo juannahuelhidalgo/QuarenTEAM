@@ -31,7 +31,7 @@ public class AdministradorDocumentos : MonoBehaviour
         sexo = GameObject.Find("RespSexo").GetComponent<Text>();
         viajo = GameObject.Find("RespViajo").GetComponent<Text>();
         data = GameObject.Find("Documento").GetComponent<datosPacientes>();
-        doc = GameObject.Find("Documento");
+        doc = GameObject.FindWithTag("Documento");
         canvas = GameObject.Find("CanvasDocumentos").GetComponent<Canvas>();
         canvasrestricciones = GameObject.Find("CanvasRestricciones").GetComponent<Canvas>();
         desiciones = GameObject.Find("CanvasDesicion").GetComponent<Canvas>();

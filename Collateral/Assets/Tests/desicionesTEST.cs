@@ -9,64 +9,61 @@ namespace Tests
     public class desicionesTEST
     {
         GameObject gameGameObject;
-        GameObject documentos;
+       // GameObject documentos;
         GameObject DOM;
         AdministradorDesiciones adm;
-        AdministradorDocumentos admin;
+      //  AdministradorDocumentos admin;
 
         //Aqui se pondra lo que se inicia/instancia con el comienzo de cada test
         [SetUp]
         public void Setup()
         {
-            //se instancia el raw image correspondiente
+            //se instancia el juego correspondiente
             DOM = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Escenas/Juego"));
-           // gameGameObject = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Desiciones/mostrarPacientes"));
+           
+          
+            //se obtiene el codigo y el objeto asociado
             gameGameObject = GameObject.Find("mostrarPacientes");
-            // documentos = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Documentos/Documento"));
-            documentos = GameObject.Find("Documento");
-            admin = documentos.GetComponent<AdministradorDocumentos>();
- 
-            //se obtiene el codigo
             adm = gameGameObject.GetComponent<AdministradorDesiciones>();
         }
+
 
         //1
         //el metodo chequea si se estan almacenando correctamente las respuestas en base a controlar su veracidad
         [UnityTest]
-        public IEnumerator TestDesicionesSi()
+        public IEnumerator TestDesiciones()
         {
-            //supone una primer respuesta correcta
-            int correcta = 1;
-
-            //llama al metodo que decide
-            adm.Si();
-
-            //el metodo devuelve el valor de la respuesta en este caso incorrecta y por ende es 0
-            int acumulada = adm.Correctas();
-
-            //si el primer valor es mayor al segundo sera verdadero
-            Assert.AreEqual(correcta, acumulada);
-
-            // yield return new WaitForSeconds (20);
-            yield return null;
-        }
-
-        //2
-        //el metodo chequea si se estan almacenando correctamente las respuestas en base a controlar su veracidad
-        [UnityTest]
-        public IEnumerator TestDesicionesNo()
-        {
+            bool rtaSi = false;
             //supone una primer respuesta incorrecta
             int incorrecta = 1;
             //llama al metodo que decide
             adm.No();
+           // Debug.Log("ejecute no");
             //el metodo devuelve el valor de la respuesta en este caso correcta y por ende es 1
-            int acumulada = adm.Correctas();
+            int acumu = adm.Correctas();
 
             //si ambos son 0 sera verdadero
-            Assert.AreEqual(incorrecta, acumulada);
+            if(incorrecta == acumu)
+            {
+                rtaSi = true;
+            }
 
-            // yield return new WaitForSeconds (20);
+            bool rtaNo = false;
+
+            //supone una primer respuesta correcta
+            int correcta = 1;
+
+            //el metodo devuelve el valor de la respuesta en este caso incorrecta y por ende es 0
+            int acumulada = adm.Incorrectas();
+            if(correcta != acumulada)
+            {
+                rtaNo = true;
+            }
+
+            //se chequea si es verdadero que la cola de correctas tiene su primer elemento "0" mediante bool 
+            //en contraposicion si la de incorrectas tiene  su primer elemento "1" mediante bool
+            Assert.AreEqual(rtaSi, rtaNo);
+            
             yield return null;
         }
 
@@ -75,7 +72,7 @@ namespace Tests
         {
             GameObject.Destroy(DOM);
             GameObject.Destroy(gameGameObject);
-            GameObject.Destroy(documentos);
+          //  GameObject.Destroy(documentos);
         }
 
     }
