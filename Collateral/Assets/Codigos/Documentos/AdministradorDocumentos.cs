@@ -54,7 +54,7 @@ public class AdministradorDocumentos : MonoBehaviour
     public void generarDocumento()
     {
 
-        string[] paciente = new string[15];
+        string[] paciente = new string[6];
         paciente = data.generatePatient();
         nombre.text = paciente[0];
         edad.text = paciente[1];
