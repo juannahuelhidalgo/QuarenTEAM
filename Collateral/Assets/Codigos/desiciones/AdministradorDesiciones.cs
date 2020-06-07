@@ -1,25 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
-public class AdministradorDesiciones : MonoBehaviour
+public class AdministradorDesiciones : MonoBehaviour, Sujeto
 {
     GameObject canvas;
     int[] RespEsperadas = new int[] { 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 }; //No ha sido chequeado
     static int[] RespTomadas = new int[15];
-    //List<Observador> observadores = new List<Observador>();
     static int lugarArray = -1;
     private static int pacientesAtendidos = 0;
     int correctas = 0;
     int incorrectas = 0;
     private int desicionesTomadas = 0; 
-    int numeroMostrar = 0;
+    //int numeroMostrar = 0;
 
 
     GameObject admDOC;
     AdministradorDocumentos admin;
-    GameObject AdmJuego;
-    adminJuego juego;
+
+
+    //----------------------------------------------------------------------------------------------------------
+    //PARAMETROS NECESARIOS PARA LOS PATRONES
+    ArrayList observadores = new ArrayList();
+    Algoritmo algoritmo = new AlgoritmoUltimaDesicion();
+    float numeroAMostrar = 0;
+    public bool pacientesSemanalesAlcanzados = false;
+    //-----------------------------------------------------------------------------------------------------------
+    
 
 
     // busca los objetos con el tag
@@ -30,14 +38,10 @@ public class AdministradorDesiciones : MonoBehaviour
         admDOC = GameObject.Find("Documento");
         admin = admDOC.GetComponent<AdministradorDocumentos>();
 
-        AdmJuego = GameObject.Find("adminJuegos");
-        juego = AdmJuego.GetComponent<adminJuego>();
-
-
-        if(desicionesTomadas == 3)
+       /* if(desicionesTomadas == 3)
         {
             desicionesTomadas = 0;
-        }
+        }*/
 
     }
 
@@ -56,26 +60,15 @@ public class AdministradorDesiciones : MonoBehaviour
         {
             desicionesTomadas++;
             pacientesAtendidos++;
-            //Debug.Log("entre al if");
-            lugarArray++;
-           // Debug.Log("sumo lugar");
-            RespTomadas[lugarArray] = 1;
+            Debug.Log("entre al if");
+           lugarArray++;
+            Debug.Log("sumo lugar");
+           RespTomadas[lugarArray] = 1;
             compararDesicion();
-           // Debug.Log("respuesta si, guardada");
-            if (desicionesTomadas <= 2)
-            {
-                admin.generarDocumento();
-            }
-           
+            Debug.Log("respuesta si, guardada");
+            //admin.generarDocumento();
         }
-        else
-        {
-            if (desicionesTomadas == 3)
-            {
-                StartCoroutine("esperaClasica");
-            }
-        }
-
+        else { Debug.Log("no se puede mas"); }
     }
 
 
@@ -86,23 +79,15 @@ public class AdministradorDesiciones : MonoBehaviour
         {
             desicionesTomadas++;
             pacientesAtendidos++;
-           // Debug.Log("entre al if");
+            Debug.Log("entre al if");
             lugarArray++;
-            //Debug.Log("sumo lugar");
+            Debug.Log("sumo lugar");
             RespTomadas[lugarArray] = 0;
             compararDesicion();
-         //   Debug.Log("respuesta no, guardada");
-            if (desicionesTomadas <= 2)
-            {
-                admin.generarDocumento();
-            }
-               
+            Debug.Log("respuesta no, guardada");
+            //admin.generarDocumento();
         }
-        else { 
-            if (desicionesTomadas == 3){ 
-                StartCoroutine("esperaClasica");    
-            } 
-        }   
+        else { Debug.Log("no se puede mas"); }
     }
 
 
@@ -112,12 +97,12 @@ public class AdministradorDesiciones : MonoBehaviour
         if (RespTomadas[lugarArray].Equals(RespEsperadas[lugarArray]))
         {
             correctas++;
-          //  Debug.Log("correcta");
+            Debug.Log("correcta");
         }
-        else { incorrectas++;/* Debug.Log("incorrecta");*/ }
+        else { incorrectas++; Debug.Log("incorrecta"); }
     }
 
-
+    
     //devuelve el valor de la desicion tomada
     int getDesicionTomada(int lugar)
     {
@@ -144,46 +129,83 @@ public class AdministradorDesiciones : MonoBehaviour
         return incorrectas;
     }
 
-    IEnumerator esperaClasica()
+    //----------------------------------------------------------------------------------------------------------
+    //METODOS NECESARIOS PARA LOS PATRONES
+
+    //Metodo suscribir el cual se encarga de registrar un nuevo observador
+    public void suscribir(Observador nuevo)
     {
-        canvas.SetActive(false);
-        bool espera = true;
-        while (espera)
-        {
-            yield return new WaitForSeconds(3);
-            juego.cargarEscenaSiguiente();
-            espera = false;
-        }
+        observadores.Add(nuevo);
     }
 
-    //este metodo notificara a los observadores
+    //Metodo desuscribir el cual se encarga de sacar un observador de la lista de observadores
+    public void desuscribir(Observador sacar)
+    {
+        int numSac = observadores.IndexOf(sacar);
+        if (numSac >= 0)
+        {
+            observadores.Remove(numSac);
+        }
+
+    }
+
+    //Metodo que se encargará de notificar a los observadores suscriptos que ha cambiado
     public void notificar()
     {
 
-          /*  for (int i = 0; i < observadores.Count; i++)
-              {
-                  observadores[i].OnNotify();
-              }*/
+        for (int i = 0; i < observadores.Count; i++)
+        {
+
+            Observador notificado = (Observador)observadores[i];
+            notificado.mostrar(numeroAMostrar);
+        }
 
     }
 
-    //este metodo dejara suscribir al observador
-    public void suscribir(/*Observador n*/)
+    //Metodo que se encargará de calcular el numero a mostrar acorde al algoritmo que se eliga
+    public void ActualizarNumeroAMostrar()
     {
-        //observadores.Add(n);
+        numeroAMostrar = algoritmo.Calcular(RespTomadas,lugarArray,correctas);
     }
 
-    //este metodo quitara el observador indicado
-    public void quitar(/*Observador n*/)
+    //Metodo que se encargá de ver si se alcanzo el numero semanal de pacientes.
+    public void corroborarLimiteSemanal()
     {
-       // observador.Remove(n);
+        if(pacientesAtendidos == 3)
+        {
+            //Acá deberia ir el metodo de ADMINJUEGO que se encarga de cargar la escena de trancisiones
+        }
+        else
+        {
+            admin.generarDocumento();
+        }
     }
 
-    //este metodo setea la estrategia a mostrar
-    public void setEstrategia()
+    //Metodo que se encarga de notificar que se tomó una nueva desicion 
+    public void nuevaDesicion(int num)
     {
+        if(num==0)
+        {
+            No();
+            ActualizarNumeroAMostrar();
+        }
+        else
+        {
+            Si();
+            ActualizarNumeroAMostrar();
+        }
+        notificar();
+        corroborarLimiteSemanal();
+     }
 
+    //Metodo que se encarga de setear el algoritmo con el que se calcula el numero a mostrar
+    public void setEstrategia(Algoritmo nueva)
+    {
+        algoritmo = nueva;
+        ActualizarNumeroAMostrar();
+        notificar();
 
     }
 
+    //-----------------------------------------------------------------------------------------------------------
 }
