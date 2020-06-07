@@ -25,7 +25,7 @@ public class AdministradorDesiciones : MonoBehaviour
     {
 
         canvas = GameObject.FindWithTag("canvasDesiciones");
-        admDOC = GameObject.FindWithTag("Documento");
+        admDOC = GameObject.Find("Documento");
         admin = admDOC.GetComponent<AdministradorDocumentos>();
 
         if(desicionesTomadas == 3)
@@ -55,12 +55,14 @@ public class AdministradorDesiciones : MonoBehaviour
            // Debug.Log("sumo lugar");
             RespTomadas[lugarArray] = 1;
             compararDesicion();
-            //Debug.Log("respuesta si, guardada");
-            admin.generarDocumento();
-             Debug.Log("genere documento");
-
+           // Debug.Log("respuesta si, guardada");
+            if (desicionesTomadas <= 2)
+            {
+                admin.generarDocumento();
+            }
+           
         }
-        else { Debug.Log("no se puede mas"); }
+        else { if (desicionesTomadas == 3) canvas.SetActive(false); Debug.Log("no se puede mas"); }
     }
 
 
@@ -76,11 +78,14 @@ public class AdministradorDesiciones : MonoBehaviour
             //Debug.Log("sumo lugar");
             RespTomadas[lugarArray] = 0;
             compararDesicion();
-          //  Debug.Log("respuesta no, guardada");
-            admin.generarDocumento();
-            Debug.Log("genere documento");
+         //   Debug.Log("respuesta no, guardada");
+            if (desicionesTomadas <= 2)
+            {
+                admin.generarDocumento();
+            }
+               
         }
-        else { Debug.Log("no se puede mas"); }
+        else { if (desicionesTomadas == 3) canvas.SetActive(false); Debug.Log("no se puede mas"); }
     }
 
 

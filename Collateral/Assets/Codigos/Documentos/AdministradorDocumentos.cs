@@ -40,14 +40,14 @@ public class AdministradorDocumentos : MonoBehaviour
 
     private void Update()
     {
-      /*  if (LlegoEnfermero)
+        if (LlegoEnfermero)
         {
             doc.SetActive(true);
         }
         else
         {
             doc.SetActive(false);
-        }*/
+        }
     }
 
 
@@ -57,7 +57,6 @@ public class AdministradorDocumentos : MonoBehaviour
         string[] paciente = new string[6];
         paciente = data.generatePatient();
         nombre.text = paciente[0];
-        Debug.Log("genere nombre text");
         edad.text = paciente[1];
         nacionalidad.text = paciente[2];
         enfermedades.text = paciente[3];
