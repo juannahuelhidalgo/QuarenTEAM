@@ -7,9 +7,13 @@ public class AdminRestricciones : MonoBehaviour
     int semanaActual;
     GameObject restriccion;
     // Start is called before the first frame update
+    GameObject Juego;
+    adminJuego admin;
     void Start()
     {
-        semanaActual = 1;
+        Juego = GameObject.Find("adminJuegos");
+        admin = Juego.GetComponent<adminJuego>();
+        semanaActual = admin.getSemanaActual()+1;
         setRestricciones();
     }
 

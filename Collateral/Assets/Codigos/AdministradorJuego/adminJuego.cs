@@ -36,6 +36,12 @@ public class adminJuego : MonoBehaviour
         semanaActual++;
     }
 
+    public int getSemanaActual()
+    {
+        return semanaActual;
+    }
+
+
     public void cargarEscenaAnterior()
     {
         SceneManager.LoadScene(EscenaActual - 1);
