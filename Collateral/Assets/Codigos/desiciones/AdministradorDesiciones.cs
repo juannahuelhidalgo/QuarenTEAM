@@ -18,6 +18,8 @@ public class AdministradorDesiciones : MonoBehaviour
 
     GameObject admDOC;
     AdministradorDocumentos admin;
+    GameObject AdmJuego;
+    adminJuego juego;
 
 
     // busca los objetos con el tag
@@ -27,6 +29,10 @@ public class AdministradorDesiciones : MonoBehaviour
         canvas = GameObject.FindWithTag("canvasDesiciones");
         admDOC = GameObject.Find("Documento");
         admin = admDOC.GetComponent<AdministradorDocumentos>();
+
+        AdmJuego = GameObject.Find("adminJuegos");
+        juego = AdmJuego.GetComponent<adminJuego>();
+
 
         if(desicionesTomadas == 3)
         {
@@ -62,7 +68,14 @@ public class AdministradorDesiciones : MonoBehaviour
             }
            
         }
-        else { if (desicionesTomadas == 3) canvas.SetActive(false); Debug.Log("no se puede mas"); }
+        else
+        {
+            if (desicionesTomadas == 3)
+            {
+                StartCoroutine("esperaClasica");
+            }
+        }
+
     }
 
 
@@ -85,7 +98,11 @@ public class AdministradorDesiciones : MonoBehaviour
             }
                
         }
-        else { if (desicionesTomadas == 3) canvas.SetActive(false); Debug.Log("no se puede mas"); }
+        else { 
+            if (desicionesTomadas == 3){ 
+                StartCoroutine("esperaClasica");    
+            } 
+        }   
     }
 
 
@@ -125,6 +142,18 @@ public class AdministradorDesiciones : MonoBehaviour
     public int Incorrectas()
     {
         return incorrectas;
+    }
+
+    IEnumerator esperaClasica()
+    {
+        canvas.SetActive(false);
+        bool espera = true;
+        while (espera)
+        {
+            yield return new WaitForSeconds(3);
+            juego.cargarEscenaSiguiente();
+            espera = false;
+        }
     }
 
     //este metodo notificara a los observadores

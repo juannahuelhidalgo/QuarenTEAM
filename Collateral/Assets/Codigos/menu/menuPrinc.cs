@@ -6,7 +6,7 @@ using UnityEngine.UI;
 //comentario 
 public class menuPrinc : MonoBehaviour
 {
-    public static int semana = -1;
+    public static int semana = -2;
     public bool EsMenu = false;
     public static int final = 5;
     public Texture2D[] frames0;

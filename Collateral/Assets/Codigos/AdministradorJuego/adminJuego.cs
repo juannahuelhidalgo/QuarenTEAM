@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class adminJuego : MonoBehaviour
 {
     int EscenaActual;
-    int semanaActual = 0;
+    public static int semanaActual = -1;
     int pacientesTotales = 0;
     static int pacientesAtendidos = 0;
 
@@ -21,16 +21,19 @@ public class adminJuego : MonoBehaviour
     {
         if (getNumeroEscenaActual() == 0 || getNumeroEscenaActual() == 1)
         {
-            semanaActual++;
-            Debug.Log("la semana actual es (primer if) " + semanaActual);
+            sumarSemana();
+            Debug.Log("la semana actual: " + semanaActual);
             SceneManager.LoadScene(EscenaActual + 1);
         }
         if (getNumeroEscenaActual() == 2)
         {
-            semanaActual++;
-            Debug.Log("la semana actual es (segundo if) " + semanaActual);
             SceneManager.LoadScene(1);
         }
+    }
+
+    public void sumarSemana()
+    {
+        semanaActual++;
     }
 
     public void cargarEscenaAnterior()
