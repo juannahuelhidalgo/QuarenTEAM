@@ -725,6 +725,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -26.200005
       objectReference: {fileID: 0}
+    - target: {fileID: 7520803507609292506, guid: 5242a230078fdad41beecbf97b131659,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7520803507609292506, guid: 5242a230078fdad41beecbf97b131659,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.02
+      objectReference: {fileID: 0}
     - target: {fileID: 7743436617389074878, guid: 5242a230078fdad41beecbf97b131659,
         type: 3}
       propertyPath: m_Text
@@ -809,6 +819,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 30.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034535371994692295, guid: 5242a230078fdad41beecbf97b131659,
+        type: 3}
+      propertyPath: m_TagString
+      value: obstaculos
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5242a230078fdad41beecbf97b131659, type: 3}

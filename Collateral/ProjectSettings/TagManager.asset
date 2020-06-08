@@ -6,6 +6,11 @@ TagManager:
   tags:
   - gif
   - canvasDesiciones
+  - Documento
+  - frenteDeJugador
+  - final
+  - puerta
+  - obstaculos
   layers:
   - Default
   - TransparentFX
