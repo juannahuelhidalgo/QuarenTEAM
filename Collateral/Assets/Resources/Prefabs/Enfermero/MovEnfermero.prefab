@@ -171,7 +171,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 48
   m_CollisionDetection: 0
 --- !u!136 &6755327434813670257
 CapsuleCollider:
@@ -183,10 +183,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.11651064
-  m_Height: 1.8677673
+  m_Radius: 0.14974976
+  m_Height: 1.7656708
   m_Direction: 1
-  m_Center: {x: 0.0068969727, y: 0.83317566, z: 0.018052094}
+  m_Center: {x: 0.008361816, y: 0.88422394, z: 0.008358002}
 --- !u!114 &5349474031828532650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,8 +200,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puerta: {fileID: 6985579555738037684}
-  objetivos: []
-  jugador: {fileID: 0}
+  objetivos:
+  - {fileID: 51948982891061643}
+  - {fileID: 8936451465753889907}
+  - {fileID: 395487240884313781}
+  - {fileID: 7630738057104067444}
+  jugador: {fileID: 6095439627368342181}
 --- !u!1 &6404860162983248210
 GameObject:
   m_ObjectHideFlags: 0
