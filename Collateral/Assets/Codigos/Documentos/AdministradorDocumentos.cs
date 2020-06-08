@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
@@ -18,10 +19,12 @@ public class AdministradorDocumentos : MonoBehaviour
     public bool LlegoEnfermero = true;
     GameObject doc;
     Canvas canvas;
+    Canvas canvasrestricciones;
+    Canvas desiciones;
+ 
 
-    private void Awake()
+     void Awake()
     {
-        
         nombre = GameObject.Find("RespNombre").GetComponent<Text>();
         edad = GameObject.Find("RespEdad").GetComponent<Text>();
         nacionalidad = GameObject.Find("RespNacionalidad").GetComponent<Text>();
@@ -29,9 +32,16 @@ public class AdministradorDocumentos : MonoBehaviour
         sexo = GameObject.Find("RespSexo").GetComponent<Text>();
         viajo = GameObject.Find("RespViajo").GetComponent<Text>();
         data = GameObject.Find("Documento").GetComponent<datosPacientes>();
-        doc = GameObject.Find("Documento");
+        doc = GameObject.FindWithTag("Documento");
         canvas = GameObject.Find("CanvasDocumentos").GetComponent<Canvas>();
-        generarDocumento();
+        canvasrestricciones = GameObject.Find("CanvasRestricciones").GetComponent<Canvas>();
+        desiciones = GameObject.Find("CanvasDesicion").GetComponent<Canvas>();
+    }
+
+    private void Start()
+    {
+        if (GameObject.Find("RespNombre").GetComponent<Text>().text.Equals("New Text"))
+            generarDocumento();
     }
 
     private void Update()
@@ -49,7 +59,7 @@ public class AdministradorDocumentos : MonoBehaviour
 
     public void generarDocumento()
     {
-
+        Debug.Log("Llame a generar documento.");
         string[] paciente = new string[6];
         paciente = data.generatePatient();
         nombre.text = paciente[0];
@@ -69,5 +79,8 @@ public class AdministradorDocumentos : MonoBehaviour
     public void mirando(bool mirar)
     {
         canvas.enabled = mirar;
+        canvasrestricciones.enabled = mirar;
+        desiciones.enabled = mirar;
     }
+
 }

@@ -8,19 +8,21 @@ using System.Diagnostics;
 //En esta clase se guarda la informacion para generar pacientes y contiene metodos para accecer a esta
 public class datosPacientes : MonoBehaviour
 {
-    private Queue<string> nombres;
-    private Queue<string> nacionalidades;
-    private Queue<string> viajo;
-    private Queue<string> enfermedades;
-    private string[] sexo = new string[2];
+    private static Queue<string> nombres = new Queue<string>();
+    private static Queue<string> nacionalidades = new Queue<string>();
+    private static Queue<string> viajo = new Queue<string>();
+    private static Queue<string> enfermedades = new Queue<string>();
+    private static string[] sexo = new string[2];
 
     public datosPacientes()
     {
 
-        nombres = new Queue<string>();
+        /*nombres = new Queue<string>();
         nacionalidades = new Queue<string>();
         viajo = new Queue<string>();
-        enfermedades = new Queue<string>();
+        enfermedades = new Queue<string>();*/
+
+
         //nombres del dataBase
         nombres.Enqueue("Mario Echeverria");
         nombres.Enqueue("Jennifer Camacho");
@@ -31,6 +33,12 @@ public class datosPacientes : MonoBehaviour
         nombres.Enqueue("Eloi Olmo");
         nombres.Enqueue("Aimar Mendoza");
         nombres.Enqueue("Sofia Ros");
+        nombres.Enqueue("Osvaldo Ros");
+        nombres.Enqueue("Sabrina Shultz");
+        nombres.Enqueue("Julian Merida");
+        nombres.Enqueue("Paz Seia");
+        nombres.Enqueue("Julieta Murisasco");
+        nombres.Enqueue("Virginia Mendez");
         //nacionalidades del database
         nacionalidades.Enqueue("Argentina");
         nacionalidades.Enqueue("Colombiana");
@@ -41,6 +49,12 @@ public class datosPacientes : MonoBehaviour
         nacionalidades.Enqueue("Argentina");
         nacionalidades.Enqueue("Colombiana");
         nacionalidades.Enqueue("Chilena");
+        nacionalidades.Enqueue("Chileno");
+        nacionalidades.Enqueue("Mexicana");
+        nacionalidades.Enqueue("Argentino");
+        nacionalidades.Enqueue("Argentina");
+        nacionalidades.Enqueue("China");
+        nacionalidades.Enqueue("Peruana");
         //databese de posibles lugares visitados
         viajo.Enqueue("USA");
         viajo.Enqueue("España");
@@ -51,6 +65,12 @@ public class datosPacientes : MonoBehaviour
         viajo.Enqueue("Francia");
         viajo.Enqueue("Alemania");
         viajo.Enqueue("Turquia");
+        viajo.Enqueue("Turquia");
+        viajo.Enqueue("USA");
+        viajo.Enqueue("Iran");
+        viajo.Enqueue("Japon");
+        viajo.Enqueue("NorCorea");
+        viajo.Enqueue("Ecuador");
         //Enfermedades del database
         enfermedades.Enqueue("Hipertension");
         enfermedades.Enqueue("Diabetes");
@@ -61,9 +81,16 @@ public class datosPacientes : MonoBehaviour
         enfermedades.Enqueue("Gripe");
         enfermedades.Enqueue("Ebola");
         enfermedades.Enqueue("Gastitris");
+        enfermedades.Enqueue("Asma");
+        enfermedades.Enqueue("Cancer");
+        enfermedades.Enqueue("Caries");
+        enfermedades.Enqueue("Hipertension");
+        enfermedades.Enqueue("Diabetes");
+        enfermedades.Enqueue("Gastitris");
         //sexo
         sexo[0] = "Hombre";
         sexo[1] = "Mujer";
+
     }
     public string[] generatePatient()
     {
