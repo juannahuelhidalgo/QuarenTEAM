@@ -21,6 +21,8 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     AdministradorDocumentos admin;
     GameObject AdmJuego;
     adminJuego juego;
+    GameObject enfer;
+    MovimientoEnfermero mov;
 
 
     //----------------------------------------------------------------------------------------------------------
@@ -42,6 +44,9 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         admin = admDOC.GetComponent<AdministradorDocumentos>();
         AdmJuego = GameObject.Find("adminJuegos");
         juego = AdmJuego.GetComponent<adminJuego>();
+        enfer = GameObject.Find("NPC");
+        mov = enfer.GetComponent<MovimientoEnfermero>();
+        mov.esperar();
     }
 
 
@@ -173,6 +178,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         Debug.Log("ENTRE A CORROBORAR LIMITESEMANAL con pacientes atendidos= " + pacientesAtendidos);
         if (pacientesAtendidos == 3)
         {
+            mov.chau();
             StartCoroutine("esperaClasica");
         }
         else

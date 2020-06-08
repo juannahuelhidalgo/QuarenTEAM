@@ -7,6 +7,8 @@
 
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class MovimientoEnfermero : MonoBehaviour
 {
@@ -15,6 +17,11 @@ public class MovimientoEnfermero : MonoBehaviour
     public GameObject puerta;
     public Transform[] objetivos;
     public Transform jugador;
+
+
+    public bool adios = false;
+    public bool espera = false;
+
 
     int i = 0;                                       //Indice del array objetivos. 
     float velocidadRotacion = 3.8f;                  //Velocidad con la que rota el personaje
@@ -25,7 +32,7 @@ public class MovimientoEnfermero : MonoBehaviour
     bool rotarAlSiguiente = false;                  //Variable que indica si se puede rotar al siguiente objetivo
     bool sePuedeMover = false;                      //Variable que indica si se puede mover o no
     bool ida;                                       //Variable que indica si esta en el camino de ida (true) o de vuelta (false)
-
+    
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -34,6 +41,9 @@ public class MovimientoEnfermero : MonoBehaviour
         ida = true;                                                                                                 //Al comienzo estamos en el camino de ida
         CalcularRotacion();                                                                                         //Calculamos la rotacion hacia el PRIMER objetivo
         MoverNPC();                                                                                                 //Nos movemos al PRIMER objetivo
+        
+        espera = false;
+        adios = false;
     }
 
     void FixedUpdate()                                                                                                   //Se ejecuta cada frame
@@ -153,6 +163,40 @@ public class MovimientoEnfermero : MonoBehaviour
     public Transform Objetivos()
     {
         return objetivos[0];
+    }
+
+    public void esperar()
+    {
+        espera = true;
+        Automatizado();
+    }
+
+    public void chau()
+    {
+        adios = true;
+    }
+
+
+    public void Automatizado()
+    {
+        while (espera == true) {
+            StartCoroutine("automatizador");
+        }
+        
+    }
+
+    IEnumerator automatizador()
+    {
+        bool mov = true;
+        PermitirMover(mov);
+        yield return new WaitForSeconds(3);
+        AbrirPuerta();
+        yield return new WaitForSeconds(20);
+        while (adios == true )
+        {
+            Volver();
+        }
+        yield return null;
     }
 
 }
