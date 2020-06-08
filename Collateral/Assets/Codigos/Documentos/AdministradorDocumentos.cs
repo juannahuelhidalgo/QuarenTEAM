@@ -23,7 +23,7 @@ public class AdministradorDocumentos : MonoBehaviour
     Canvas desiciones;
  
 
-     void Start()
+     void Awake()
     {
         nombre = GameObject.Find("RespNombre").GetComponent<Text>();
         edad = GameObject.Find("RespEdad").GetComponent<Text>();
@@ -36,7 +36,12 @@ public class AdministradorDocumentos : MonoBehaviour
         canvas = GameObject.Find("CanvasDocumentos").GetComponent<Canvas>();
         canvasrestricciones = GameObject.Find("CanvasRestricciones").GetComponent<Canvas>();
         desiciones = GameObject.Find("CanvasDesicion").GetComponent<Canvas>();
-        generarDocumento();
+    }
+
+    private void Start()
+    {
+        if (GameObject.Find("RespNombre").GetComponent<Text>().text.Equals("New Text"))
+            generarDocumento();
     }
 
     private void Update()

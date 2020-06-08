@@ -32,7 +32,7 @@ public class transicionTEST
     {
 
         //en esta variable se almacena el valor de la primer semana 
-        int semanaAnterior = 0;
+        int semanaAnterior = noticias.semanaActual();
         Debug.Log("SemanaAnterior: " + semanaAnterior);
 
         noticias.cambioSemana();
