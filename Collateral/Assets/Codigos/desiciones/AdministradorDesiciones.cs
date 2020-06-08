@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using System.Linq.Expressions;
 using UnityEngine;
 
@@ -9,10 +10,10 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     int[] RespEsperadas = new int[] { 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 }; //No ha sido chequeado
     static int[] RespTomadas = new int[15];
     static int lugarArray = -1;
-    private static int pacientesAtendidos = 0;
-    int correctas = 0;
-    int incorrectas = 0;
-    private int desicionesTomadas = 0; 
+    private int pacientesAtendidos = 0;
+    static int correctas = 0;
+    static int incorrectas = 0;
+    private int desicionesTomadas; 
     //int numeroMostrar = 0;
 
 
@@ -24,9 +25,9 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
 
     //----------------------------------------------------------------------------------------------------------
     //PARAMETROS NECESARIOS PARA LOS PATRONES
-    ArrayList observadores = new ArrayList();
-    Algoritmo algoritmo = new AlgoritmoUltimaDesicion();
-    float numeroAMostrar = 0;
+    static ArrayList observadores = new ArrayList();
+    static Algoritmo algoritmo = new AlgoritmoUltimaDesicion();
+    static float numeroAMostrar = 0;
     public bool pacientesSemanalesAlcanzados = false;
     //-----------------------------------------------------------------------------------------------------------
     
@@ -39,15 +40,8 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         canvas = GameObject.FindWithTag("canvasDesiciones");
         admDOC = GameObject.Find("Documento");
         admin = admDOC.GetComponent<AdministradorDocumentos>();
-
         AdmJuego = GameObject.Find("adminJuegos");
         juego = AdmJuego.GetComponent<adminJuego>();
-
-         if(desicionesTomadas == 3)
-         {
-             desicionesTomadas = 0;
-         }
-
     }
 
 
@@ -61,8 +55,8 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     //algoritmo si se decide que si
     public void Si()
     {
-        if (desicionesTomadas < 3)
-        {
+        /*if (desicionesTomadas < 3)
+        {*/
             desicionesTomadas++;
             pacientesAtendidos++;
             Debug.Log("entre al if");
@@ -72,16 +66,16 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
             compararDesicion();
             Debug.Log("respuesta si, guardada");
             //admin.generarDocumento();
-        }
-        else { Debug.Log("no se puede mas"); }
+       /* }
+        else { Debug.Log("no se puede mas"); }*/
     }
 
 
     //algoritmo si se decide que no
     public void No()
     {
-        if (desicionesTomadas < 3)
-        {
+        /*if (desicionesTomadas < 3)
+        {*/
             desicionesTomadas++;
             pacientesAtendidos++;
             Debug.Log("entre al if");
@@ -91,8 +85,8 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
             compararDesicion();
             Debug.Log("respuesta no, guardada");
             //admin.generarDocumento();
-        }
-        else { Debug.Log("no se puede mas"); }
+        /*}
+        else { Debug.Log("no se puede mas"); }*/
     }
 
 
@@ -157,7 +151,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     //Metodo que se encargará de notificar a los observadores suscriptos que ha cambiado
     public void notificar()
     {
-
+        
         for (int i = 0; i < observadores.Count; i++)
         {
 
@@ -176,7 +170,8 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     //Metodo que se encargá de ver si se alcanzo el numero semanal de pacientes.
     public void corroborarLimiteSemanal()
     {
-        if(pacientesAtendidos == 3)
+        Debug.Log("ENTRE A CORROBORAR LIMITESEMANAL con pacientes atendidos= " + pacientesAtendidos);
+        if (pacientesAtendidos == 3)
         {
             StartCoroutine("esperaClasica");
         }

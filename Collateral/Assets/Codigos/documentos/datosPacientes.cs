@@ -8,19 +8,21 @@ using System.Diagnostics;
 //En esta clase se guarda la informacion para generar pacientes y contiene metodos para accecer a esta
 public class datosPacientes : MonoBehaviour
 {
-    private static Queue<string> nombres;
-    private static Queue<string> nacionalidades;
-    private static Queue<string> viajo;
-    private static Queue<string> enfermedades;
+    private static Queue<string> nombres = new Queue<string>();
+    private static Queue<string> nacionalidades = new Queue<string>();
+    private static Queue<string> viajo = new Queue<string>();
+    private static Queue<string> enfermedades = new Queue<string>();
     private static string[] sexo = new string[2];
 
     public datosPacientes()
     {
 
-        nombres = new Queue<string>();
+        /*nombres = new Queue<string>();
         nacionalidades = new Queue<string>();
         viajo = new Queue<string>();
-        enfermedades = new Queue<string>();
+        enfermedades = new Queue<string>();*/
+
+
         //nombres del dataBase
         nombres.Enqueue("Mario Echeverria");
         nombres.Enqueue("Jennifer Camacho");
@@ -88,6 +90,7 @@ public class datosPacientes : MonoBehaviour
         //sexo
         sexo[0] = "Hombre";
         sexo[1] = "Mujer";
+
     }
     public string[] generatePatient()
     {

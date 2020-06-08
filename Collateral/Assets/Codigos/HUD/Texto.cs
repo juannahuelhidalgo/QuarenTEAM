@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Texto : Observador
 {
-    Sujeto mirar;
-    Text vistaTexto;
+    static Sujeto mirar;
+    static Text vistaTexto;
 
     public Texto(Sujeto miralo)
     {

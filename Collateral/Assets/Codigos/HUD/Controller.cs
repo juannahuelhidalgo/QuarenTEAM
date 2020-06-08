@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    AdministradorDesiciones administrador;
-    Observador texto;
+    static AdministradorDesiciones administrador;
+    static Observador texto;
+    static AlgoritmoUltimaDesicion ultima = new AlgoritmoUltimaDesicion();
+    static AlgoritmoPromedio promedio = new AlgoritmoPromedio();
     // Start is called before the first frame update
-    
-    
+
+
     void Start()
     {
         administrador = GameObject.Find("mostrarPacientes").GetComponent<AdministradorDesiciones>(); //Se determina el sujeto del patron
@@ -23,11 +25,11 @@ public class Controller : MonoBehaviour
 
     public void setAlgoritmoUltimaDesicion()
     {
-        administrador.setEstrategia(new AlgoritmoUltimaDesicion());
+        administrador.setEstrategia(ultima);
     }
 
     public void setAlgoritmoPromedio()
     {
-        administrador.setEstrategia(new AlgoritmoPromedio());
+        administrador.setEstrategia(promedio);
     }
 }

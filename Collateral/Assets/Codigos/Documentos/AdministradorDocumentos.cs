@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
@@ -22,7 +23,7 @@ public class AdministradorDocumentos : MonoBehaviour
     Canvas desiciones;
  
 
-    private void Awake()
+     void Start()
     {
         nombre = GameObject.Find("RespNombre").GetComponent<Text>();
         edad = GameObject.Find("RespEdad").GetComponent<Text>();
@@ -53,7 +54,7 @@ public class AdministradorDocumentos : MonoBehaviour
 
     public void generarDocumento()
     {
-
+        Debug.Log("Llame a generar documento.");
         string[] paciente = new string[6];
         paciente = data.generatePatient();
         nombre.text = paciente[0];
