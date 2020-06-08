@@ -9,11 +9,13 @@ public class adminJuego : MonoBehaviour
     public static int semanaActual = -1;
     int pacientesTotales = 0;
     static int pacientesAtendidos = 0;
+    bool exit = false;
 
 
     void Start()
     {
         EscenaActual = SceneManager.GetActiveScene().buildIndex;
+        exit = false;
        // Debug.Log("DEBUG DE ADMINISTRADOR DE ESCENA -La escena es: " + EscenaActual);
     }
 
@@ -33,10 +35,16 @@ public class adminJuego : MonoBehaviour
         if(semanaActual == 5) SceneManager.LoadScene(0);
     }
 
+    public bool salir()
+    {
+        return exit;
+    }
+
     public void sumarSemana()
     {
         semanaActual++;
     }
+
 
     public int getSemanaActual()
     {
@@ -57,6 +65,7 @@ public class adminJuego : MonoBehaviour
     public void cerrarJuego()
     {
         Debug.Log("estoy cerrando el juego");
+        exit = true;
         Application.Quit();
     }
     public void cargarEscena(int num)

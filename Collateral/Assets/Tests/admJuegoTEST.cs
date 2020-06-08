@@ -45,6 +45,8 @@ namespace Tests
             yield return null;
         }
 
+        //2
+        //Se verificara si cambia de escena
         [UnityTest]
         public IEnumerator TestEscenaAnterior()
         {
@@ -64,6 +66,18 @@ namespace Tests
                Assert.AreEqual(EscenaInicial - 1, EscenaFinal);
             yield return null;
         }
+
+        //3
+        //Se verificara si el juego sale
+        [UnityTest]
+        public IEnumerator TestSalir()
+        {
+            bool salio = true;
+            admin.cerrarJuego();
+            Assert.AreEqual(salio, admin.salir());
+            yield return null;
+        }
+
 
         [TearDown]
         public void Teardown()
