@@ -29,6 +29,8 @@ public class adminJuego : MonoBehaviour
         {
             SceneManager.LoadScene(1);
         }
+
+        if(semanaActual == 5) SceneManager.LoadScene(0);
     }
 
     public void sumarSemana()
