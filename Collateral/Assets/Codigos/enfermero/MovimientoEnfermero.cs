@@ -14,6 +14,7 @@ public class MovimientoEnfermero : MonoBehaviour
 {
     Animator anim;
     Rigidbody rigid;
+    public disparadorDeEventos eventos;
     public GameObject puerta;
     public Transform[] objetivos;
     public Transform jugador;
@@ -37,13 +38,11 @@ public class MovimientoEnfermero : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
+        eventos = GameObject.FindGameObjectWithTag("Documento").GetComponent<disparadorDeEventos>();
         anim.SetBool("Moviendo", false);                                                                            //Comienza quieto
         ida = true;                                                                                                 //Al comienzo estamos en el camino de ida
-        CalcularRotacion();                                                                                         //Calculamos la rotacion hacia el PRIMER objetivo
-        MoverNPC();                                                                                                 //Nos movemos al PRIMER objetivo
-        
-        espera = false;
-        adios = false;
+        CalcularRotacion();                                                                                         //Calculamos la rotacion hacia el PRIMER objetivo  
+        StartCoroutine("Comienzo");
     }
 
     void FixedUpdate()                                                                                                   //Se ejecuta cada frame
@@ -51,6 +50,7 @@ public class MovimientoEnfermero : MonoBehaviour
         Rotacion();                                                                                                 //Se llama constantemente a la funcion que se encarga de rotar
         Movimiento();                                                                                               //Se llama constantemente a la funcion que se encarga de mover
     }
+    
     void Rotacion()
     {   //Funcion que rota "suavemente" el personaje
         transform.rotation = Quaternion.Slerp(transform.rotation, rotacion, velocidadRotacion * Time.deltaTime);            //La rotacion se hace constantemente en esta linea
@@ -109,6 +109,8 @@ public class MovimientoEnfermero : MonoBehaviour
                 PermitirRotarAlSiguiente(false);                                                                    //Desactivamos la rotacion al proximo objetivo
                 direccion = jugador.position - transform.position;                                                  //Calculamos la proxima rotacion a hacerse hacia el jugador (no hacia el prox objetivo)
                 rotacion = Quaternion.LookRotation(direccion, Vector3.up);
+                StartCoroutine("llego");
+                
             }
         }
 
@@ -160,6 +162,21 @@ public class MovimientoEnfermero : MonoBehaviour
         PermitirMover(true);  
     }
 
+    IEnumerator llego()
+    {
+        eventos.llegoDocumento = true;
+        yield return new WaitForSeconds(3);
+        eventos.seFueEnfermero = true;
+        Volver();
+    }
+
+    IEnumerator Comienzo()
+    {
+        yield return new WaitForSeconds(2);
+        PermitirMover(true);
+    }
+
+    /*
     public Transform Objetivos()
     {
         return objetivos[0];
@@ -198,5 +215,6 @@ public class MovimientoEnfermero : MonoBehaviour
         }
         yield return null;
     }
+    */
 
 }

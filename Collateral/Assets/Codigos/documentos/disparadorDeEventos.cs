@@ -11,12 +11,16 @@ public class disparadorDeEventos : MonoBehaviour
     private seguidorDeMouse mouse;
     //Me va a permitir setear la posición de la camara
     private visorDeObjetos view;
+    
+    public bool llegoDocumento = false;
+    public bool seFueEnfermero = false;
    
     //Obtiene las referencias de las otras clases que necesita para funcionar
     public void Awake()
     {
         mouse = this.GetComponent<seguidorDeMouse>();
         view = this.GetComponent<visorDeObjetos>();
+        this.GetComponent<MeshRenderer>().enabled = false;
 
     }
     private void Start()
@@ -28,10 +32,13 @@ public class disparadorDeEventos : MonoBehaviour
     //timer evita que se hagan multiples cambios de camara por click, ya que un click puede durar mas de una llamada de update
     void Update()
     {
+        if(llegoDocumento)
+            this.GetComponent<MeshRenderer>().enabled = true;
+
         //Time.deltaTime me devuelve el tiempo transcurrido entre el frame anterior y este
         timer += Time.deltaTime;
         //Si el usuario hace click derecho, esta sobre el documento y el tiempo desde que se ejecuto el último mov de camara es mayor a 0,3 s
-        if (Input.GetMouseButton(0) && mouse.getObjectUnder() == "Documento" && timer > 0.3)
+        if (Input.GetMouseButton(0) && mouse.getObjectUnder() == "Documento" && timer > 0.3 && seFueEnfermero)
         {
             timer = 0.0f;
             if (!viewingDocument)
