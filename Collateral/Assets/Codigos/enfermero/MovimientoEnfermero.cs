@@ -25,8 +25,8 @@ public class MovimientoEnfermero : MonoBehaviour
 
 
     int i = 0;                                       //Indice del array objetivos. 
-    float velocidadRotacion = 3.8f;                  //Velocidad con la que rota el personaje
-    float velocidadMovimiento = 2.7f;                //Velocidad con la que se mueve el personaje
+    float velocidadRotacion = 2.8f;                  //Velocidad con la que rota el personaje
+    float velocidadMovimiento = 1.7f;                //Velocidad con la que se mueve el personaje
     Quaternion rotacion;
     Vector3 direccion;
   
@@ -165,14 +165,14 @@ public class MovimientoEnfermero : MonoBehaviour
     IEnumerator llego()
     {
         eventos.llegoDocumento = true;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         eventos.seFueEnfermero = true;
-        Volver();
+        // Volver();
     }
 
     IEnumerator Comienzo()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         PermitirMover(true);
     }
 

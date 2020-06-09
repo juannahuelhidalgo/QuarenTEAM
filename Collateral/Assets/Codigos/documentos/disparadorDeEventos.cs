@@ -7,7 +7,7 @@ public class disparadorDeEventos : MonoBehaviour
     private float timer;
     //me permite saber si estoy viendo el documento
     bool viewingDocument;
-    //me permite saber sobre que puto objeto esta el mouse
+    //me permite saber sobre que objeto esta el mouse
     private seguidorDeMouse mouse;
     //Me va a permitir setear la posición de la camara
     private visorDeObjetos view;
