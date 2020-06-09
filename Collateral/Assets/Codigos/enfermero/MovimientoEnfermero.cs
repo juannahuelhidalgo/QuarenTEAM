@@ -26,7 +26,7 @@ public class MovimientoEnfermero : MonoBehaviour
 
     int i = 0;                                       //Indice del array objetivos. 
     float velocidadRotacion = 3.8f;                  //Velocidad con la que rota el personaje
-    float velocidadMovimiento = 3.2f;                //Velocidad con la que se mueve el personaje
+    float velocidadMovimiento = 2.7f;                //Velocidad con la que se mueve el personaje
     Quaternion rotacion;
     Vector3 direccion;
   
