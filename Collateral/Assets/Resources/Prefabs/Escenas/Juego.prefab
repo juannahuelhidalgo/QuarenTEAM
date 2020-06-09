@@ -375,6 +375,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puerta
       objectReference: {fileID: 0}
+    - target: {fileID: 7577322503064004565, guid: 2b4776a5595bb14429ce5b1a4651a792,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8023574862215758740, guid: 2b4776a5595bb14429ce5b1a4651a792,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -738,7 +743,7 @@ PrefabInstance:
     - target: {fileID: 6404860162983248210, guid: 9a471f5c69b6fc9428acf1aab4337892,
         type: 3}
       propertyPath: m_TagString
-      value: puerta
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7017913960261639809, guid: 9a471f5c69b6fc9428acf1aab4337892,
         type: 3}

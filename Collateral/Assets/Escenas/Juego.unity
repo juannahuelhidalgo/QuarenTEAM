@@ -200,6 +200,11 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 777114519325615133, guid: 5242a230078fdad41beecbf97b131659,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 778259871808700969, guid: 5242a230078fdad41beecbf97b131659,
         type: 3}
       propertyPath: m_AnchoredPosition.x
