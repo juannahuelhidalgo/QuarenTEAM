@@ -58,6 +58,8 @@ namespace Tests
             yield return null;
         }
         
+        //hacer que verifique cuando colisione con el tag frente jugador
+
         [UnityTest]
         public IEnumerator EnfermeroSeMueveHastaFrenteDelJugador_Test()
         {
@@ -75,8 +77,8 @@ namespace Tests
             pos_enfermero = GameObject.FindWithTag("NPC").transform.position;
             Debug.Log(pos_enfermero);
             Debug.Log(pos_frenteDeJugador);
-            pos_enfermero = new Vector3(Mathf.Round(pos_enfermero.x), Mathf.Round(pos_enfermero.y), Mathf.Round(pos_enfermero.z));
-            pos_frenteDeJugador = new Vector3(Mathf.Round(pos_frenteDeJugador.x), Mathf.Round(pos_frenteDeJugador.y), Mathf.Round(pos_frenteDeJugador.z));
+            //pos_enfermero = new Vector3(Mathf.Round(pos_enfermero.x), Mathf.Round(pos_enfermero.y), Mathf.Round(pos_enfermero.z));
+            //pos_frenteDeJugador = new Vector3(Mathf.Round(pos_frenteDeJugador.x), Mathf.Round(pos_frenteDeJugador.y), Mathf.Round(pos_frenteDeJugador.z));
             Debug.Log(pos_enfermero);
             Assert.AreEqual(pos_enfermero, pos_frenteDeJugador);
             
