@@ -176,4 +176,17 @@ public class MovimientoEnfermero : MonoBehaviour
         PermitirMover(true);
     }
 
+    public Transform[] returnObjetivos()
+    {
+        if(objetivos == null)
+        for(int i = 0; i<3 ; i++)
+        Debug.Log("Esta vacio");
+        else 
+        Debug.Log("no esta vacio");
+        return objetivos;        
+    }
+    public void prueba()
+    {
+        Debug.Log("si llamo bien");
+    }
 }
