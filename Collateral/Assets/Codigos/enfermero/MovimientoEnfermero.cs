@@ -14,7 +14,7 @@ public class MovimientoEnfermero : MonoBehaviour
 {
     Animator anim;
     Rigidbody rigid;
-    public disparadorDeEventos eventos;
+    disparadorDeEventos eventos;
     public GameObject puerta;
     public Transform[] objetivos;
     public Transform jugador;
@@ -25,15 +25,15 @@ public class MovimientoEnfermero : MonoBehaviour
 
 
     int i = 0;                                       //Indice del array objetivos. 
-    float velocidadRotacion = 2.8f;                  //Velocidad con la que rota el personaje
-    float velocidadMovimiento = 1.7f;                //Velocidad con la que se mueve el personaje
+    float velocidadRotacion = 4.6f;                  //Velocidad con la que rota el personaje
+    float velocidadMovimiento = 2.2f;                //Velocidad con la que se mueve el personaje
     Quaternion rotacion;
     Vector3 direccion;
   
     bool rotarAlSiguiente = false;                  //Variable que indica si se puede rotar al siguiente objetivo
     bool sePuedeMover = false;                      //Variable que indica si se puede mover o no
     bool ida;                                       //Variable que indica si esta en el camino de ida (true) o de vuelta (false)
-    
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -73,6 +73,7 @@ public class MovimientoEnfermero : MonoBehaviour
 
     void CalcularRotacion()                                                                                          //Se calcula la rotacion a realizarse                
     {
+        Debug.Log(i);
         direccion = objetivos[i].position - transform.position;                                                      //Vector que marca la direccion de la rotacion
         rotacion = Quaternion.LookRotation(direccion, Vector3.up);                                                   //Rotacion que lleva hacia donde apunta el vector rotacion
     }
@@ -120,7 +121,7 @@ public class MovimientoEnfermero : MonoBehaviour
             {
                 PermitirMover(false);                                                                                //Desactivo el movimiento
                 anim.SetBool("Moviendo", false);                                                                     //Desactivo la animacion de movimiento
-                PermitirRotarAlSiguiente(false);                                                                     //Desactivamos la rotacion al proximo objetivo
+                PermitirRotarAlSiguiente(false);                                                                     //Desactivamos la rotacion al proximo objetiv
             }
         }
     }
@@ -150,7 +151,6 @@ public class MovimientoEnfermero : MonoBehaviour
         puerta.SetActive(false);
         PermitirMover(true);
         anim.SetBool("Moviendo", true);
-        //velocidadRotacion = 6f;
     }
 
     public void Volver()                                                                                            //Metodo que se ejecuta para que vuelva a la posicion inicial
@@ -159,15 +159,15 @@ public class MovimientoEnfermero : MonoBehaviour
         Debug.Log("i al volver vale: "+ i);
         CalcularRotacion();
         ida = false;
-        PermitirMover(true);  
+        velocidadRotacion = 3f;
+        PermitirMover(true);
     }
 
     IEnumerator llego()
     {
-        eventos.llegoDocumento = true;
+        eventos.LlegoDocumento();
         yield return new WaitForSeconds(1);
-        eventos.seFueEnfermero = true;
-        // Volver();
+        eventos.SePuedeVer(true);
     }
 
     IEnumerator Comienzo()
@@ -175,46 +175,5 @@ public class MovimientoEnfermero : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         PermitirMover(true);
     }
-
-    /*
-    public Transform Objetivos()
-    {
-        return objetivos[0];
-    }
-
-    public void esperar()
-    {
-        espera = true;
-        Automatizado();
-    }
-
-    public void chau()
-    {
-        adios = true;
-    }
-
-
-    public void Automatizado()
-    {
-        while (espera == true) {
-            StartCoroutine("automatizador");
-        }
-        
-    }
-
-    IEnumerator automatizador()
-    {
-        bool mov = true;
-        PermitirMover(mov);
-        yield return new WaitForSeconds(3);
-        AbrirPuerta();
-        yield return new WaitForSeconds(20);
-        while (adios == true )
-        {
-            Volver();
-        }
-        yield return null;
-    }
-    */
 
 }

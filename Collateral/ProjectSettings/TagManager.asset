@@ -11,6 +11,7 @@ TagManager:
   - final
   - puerta
   - obstaculos
+  - NPC
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     GameObject AdmJuego;
     adminJuego juego;
     GameObject enfer;
-    MovimientoEnfermero mov;
+    disparadorDeEventos eventos;
 
 
     //----------------------------------------------------------------------------------------------------------
@@ -42,18 +42,17 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         canvas = GameObject.FindWithTag("canvasDesiciones");
         admDOC = GameObject.Find("Documento");
         admin = admDOC.GetComponent<AdministradorDocumentos>();
+        eventos = admDOC.GetComponent<disparadorDeEventos>();
         AdmJuego = GameObject.Find("adminJuegos");
         juego = AdmJuego.GetComponent<adminJuego>();
-        enfer = GameObject.Find("NPC");
-        mov = enfer.GetComponent<MovimientoEnfermero>();
-        
+        enfer = GameObject.Find("NPC");        
     }
 
 
     //Chequea si se esta mirando el documento para mostrar las posibles desiciones
     void Update()
     {
-      
+
     }
 
 
@@ -178,8 +177,8 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         Debug.Log("ENTRE A CORROBORAR LIMITESEMANAL con pacientes atendidos= " + pacientesAtendidos);
         if (pacientesAtendidos == 3)
         {
-            
-            StartCoroutine("esperaClasica");
+           eventos.EnfermeroSeVa();            
+           StartCoroutine("PasarSemana");
         }
         else
         {
@@ -187,18 +186,10 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         }
     }
 
-    IEnumerator esperaClasica()
+    IEnumerator PasarSemana()
     {
-        // canvas.SetActive(false);
-        yield return new WaitForSeconds(2);
-        bool espera = true;
-        mov.Volver();
-        while (espera)
-        {
-            yield return new WaitForSeconds(4);
-            juego.cargarEscenaSiguiente();
-            espera = false;
-        }
+        yield return new WaitForSeconds(3.5f);                          //Tiempo que espera el juego antes de pasar a la siguiente semana para que el enfermero se vaya de la habitacion
+        juego.cargarEscenaSiguiente();
     }
 
     //Metodo que se encarga de notificar que se tomó una nueva desicion 
