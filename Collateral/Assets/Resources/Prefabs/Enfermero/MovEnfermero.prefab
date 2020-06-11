@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 7838040630342970558}
   m_Layer: 0
   m_Name: Objetivo_2
-  m_TagString: Untagged
+  m_TagString: final
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -756,6 +756,11 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 16aa77ba452d61c45b8724cf4dfff414,
         type: 3}
       propertyPath: m_Name
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 16aa77ba452d61c45b8724cf4dfff414,
+        type: 3}
+      propertyPath: m_TagString
       value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 1912126175820078846, guid: 16aa77ba452d61c45b8724cf4dfff414,
