@@ -7,7 +7,7 @@ using UnityEngine;
 public class AdministradorDesiciones : MonoBehaviour, Sujeto
 {
     GameObject canvas;
-    int[] RespEsperadas = new int[] { 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 }; //No ha sido chequeado
+    int[] RespEsperadas = new int[] { 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1 };
     static int[] RespTomadas = new int[15];
     static int lugarArray = -1;
     private int pacientesAtendidos = 0;

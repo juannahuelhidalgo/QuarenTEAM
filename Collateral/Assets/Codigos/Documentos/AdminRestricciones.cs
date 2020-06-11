@@ -13,7 +13,7 @@ public class AdminRestricciones : MonoBehaviour
     {
         Juego = GameObject.Find("adminJuegos");
         admin = Juego.GetComponent<adminJuego>();
-        semanaActual = admin.getSemanaActual()+2;
+        semanaActual = admin.getSemanaActual()+1;
         setRestricciones();
     }
 
