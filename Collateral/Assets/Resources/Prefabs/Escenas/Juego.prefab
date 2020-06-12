@@ -2038,17 +2038,17 @@ PrefabInstance:
     - target: {fileID: 311915960495758952, guid: bd4f30d00873a71478423d6ba3f2b436,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.262
       objectReference: {fileID: 0}
     - target: {fileID: 311915960495758952, guid: bd4f30d00873a71478423d6ba3f2b436,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.168
       objectReference: {fileID: 0}
     - target: {fileID: 311915960495758952, guid: bd4f30d00873a71478423d6ba3f2b436,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 8.34
       objectReference: {fileID: 0}
     - target: {fileID: 311915960495758952, guid: bd4f30d00873a71478423d6ba3f2b436,
         type: 3}
@@ -2164,6 +2164,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407925184561717128, guid: 9a471f5c69b6fc9428acf1aab4337892,
+        type: 3}
+      propertyPath: m_TagString
+      value: obstaculos
       objectReference: {fileID: 0}
     - target: {fileID: 4821336728193950573, guid: 9a471f5c69b6fc9428acf1aab4337892,
         type: 3}
@@ -2523,6 +2528,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hospital
+      objectReference: {fileID: 0}
+    - target: {fileID: 8873164845520328608, guid: e6871f746193c1c45b46ab00894226b4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.886
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6871f746193c1c45b46ab00894226b4, type: 3}

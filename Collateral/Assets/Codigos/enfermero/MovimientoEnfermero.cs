@@ -45,6 +45,14 @@ public class MovimientoEnfermero : MonoBehaviour
         StartCoroutine("Comienzo");
     }
 
+    void AcomodarObjetivos()
+    {
+        GameObject[] obj = GameObject.FindGameObjectsWithTag("obstaculos");
+
+        for(int i=0; i < obj.Length ; i++)
+            obj[i].transform.position = new Vector3(obj[i].transform.position.x, 1.05f, obj[i].transform.position.z);
+    }
+
     void FixedUpdate()                                                                                                   //Se ejecuta cada frame
     {
         Rotacion();                                                                                                 //Se llama constantemente a la funcion que se encarga de rotar
