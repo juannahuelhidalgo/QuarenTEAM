@@ -390,17 +390,17 @@ PrefabInstance:
     - target: {fileID: 6261128222455668511, guid: 0b712f4c8b675ba4b95b92958a49cfb2,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 12.796809
+      value: 21.867962
       objectReference: {fileID: 0}
     - target: {fileID: 6261128222455668511, guid: 0b712f4c8b675ba4b95b92958a49cfb2,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 9.02458
+      value: 15.421749
       objectReference: {fileID: 0}
     - target: {fileID: 6261128222455668511, guid: 0b712f4c8b675ba4b95b92958a49cfb2,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 9.8900585
+      value: 16.90073
       objectReference: {fileID: 0}
     - target: {fileID: 6261128222455668511, guid: 0b712f4c8b675ba4b95b92958a49cfb2,
         type: 3}
@@ -469,6 +469,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b712f4c8b675ba4b95b92958a49cfb2, type: 3}
+--- !u!1 &1387513773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5096124023923430949, guid: 0b712f4c8b675ba4b95b92958a49cfb2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1387513772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!222 &1387513774
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387513773}
+  m_CullTransparentMesh: 0
 --- !u!1 &1937532339
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,3 +575,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &2080333600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8823171409869302858, guid: 0b712f4c8b675ba4b95b92958a49cfb2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1387513772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1818360610 &2080333605
+ScaleConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080333600}
+  m_Enabled: 1
+  m_Weight: 0
+  m_ScaleAtRest: {x: 1, y: 1, z: 1}
+  m_ScaleOffset: {x: 1, y: 1, z: 1}
+  m_AffectScalingX: 1
+  m_AffectScalingY: 1
+  m_AffectScalingZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources: []
