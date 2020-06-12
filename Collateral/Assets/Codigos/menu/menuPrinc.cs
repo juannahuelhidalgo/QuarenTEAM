@@ -36,7 +36,7 @@ public class menuPrinc : MonoBehaviour
     }
 
 
-    public int semanaActual()
+    public int getSemanaActual()
     {
         return semana;
     }
@@ -58,15 +58,13 @@ public class menuPrinc : MonoBehaviour
     }
 
 
-    public bool esMenu()
+    public bool getEsMenu()
     {
         return EsMenu;
     }
 
     IEnumerator mostrar()
     {
-
-       // Debug.Log("estoy en el switch semana= " + semana);
         int indice = (int)(Time.time * fps % frames1.Length);
         int indiceMenu = (int)(Time.time * fps % frames0.Length);
         if (EsMenu == true)
@@ -74,7 +72,8 @@ public class menuPrinc : MonoBehaviour
             GetComponent<RawImage>().texture = frames0[indiceMenu];
             yield return new WaitForSeconds(10);
         }
-        if (EsMenu == false) {
+        if (EsMenu == false)
+        {
             switch (semana)
             {
                 case 0:
@@ -116,7 +115,7 @@ public class menuPrinc : MonoBehaviour
 
         }
     }
-           
+
 
 }
 
