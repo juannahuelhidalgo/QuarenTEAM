@@ -71,6 +71,7 @@ namespace Tests
             yield return null;
         }
 
+        /*
         //3
         //el metodo chequea si se estan comparando las decisiones
         [UnityTest]
@@ -127,7 +128,7 @@ namespace Tests
 
             yield return null;
         }
-
+       */
 
         //6
         //el metodo chequea si se notifica a los observadores correctamente
@@ -146,7 +147,7 @@ namespace Tests
             yield return null;
         }
 
-
+/*
         //7
         //el metodo chequea si el numero a mostrar es distinto despues de cada desicion
         [UnityTest]
@@ -178,7 +179,7 @@ namespace Tests
 
             yield return null;
         }
-
+*/
 
         //9
         //el metodo chequea si se notifica correctamente al tomar una desicion
@@ -200,45 +201,6 @@ namespace Tests
             yield return null;
         }
 
-        /*
-        //1
-        //el metodo chequea si se estan almacenando correctamente las respuestas en base a controlar su veracidad
-        [UnityTest]
-        public IEnumerator TestDesiciones()
-        {
-            bool rtaSi = false;
-            //supone una primer respuesta incorrecta
-            int incorrecta = 1;
-            //llama al metodo que decide
-            adm.No();
-           // Debug.Log("ejecute no");
-            //el metodo devuelve el valor de la respuesta en este caso correcta y por ende es 1
-            int acumu = adm.Correctas();
-
-            //si ambos son 0 sera verdadero
-            if(incorrecta == acumu)
-            {
-                rtaSi = true;
-            }
-
-            bool rtaNo = false;
-
-            //supone una primer respuesta correcta
-            int correcta = 1;
-
-            //el metodo devuelve el valor de la respuesta en este caso incorrecta y por ende es 0
-            int acumulada = adm.Incorrectas();
-            if(correcta != acumulada)
-            {
-                rtaNo = true;
-            }
-
-            //se chequea si es verdadero que la cola de correctas tiene su primer elemento "0" mediante bool 
-            //en contraposicion si la de incorrectas tiene  su primer elemento "1" mediante bool
-            Assert.AreEqual(rtaSi, rtaNo);
-            
-            yield return null;
-        }*/
 
         [TearDown]
         public void Teardown()
