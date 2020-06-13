@@ -156,7 +156,7 @@ namespace npcTEST
         [UnityTest]
         public IEnumerator Movimiento_Test()
         {      
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             Assert.IsTrue(movimientoEnfermero.GetComponent<Animator>().GetBool("Moviendo"));
             
             yield return null;
@@ -176,17 +176,25 @@ namespace npcTEST
 
         [UnityTest]
         public IEnumerator Volver_Test()
-        {      
+        {
             yield return new WaitForSeconds(5f);
             Vector3 pos1 = movimientoEnfermero.transform.position;
             movimientoEnfermero.Volver();
             yield return new WaitForSeconds(1f);
             Vector3 pos2 = movimientoEnfermero.transform.position;
 
-            Assert.AreNotEqual(pos1,pos2);            
+            Assert.AreNotEqual(pos1, pos2);
 
 
             yield return null;
+        }
+
+
+        [TearDown]
+        public void Teardown()
+        {
+            Debug.Log("aca");
+            Object.Destroy(juego.gameObject);
         }
 
 
