@@ -6,6 +6,14 @@ TagManager:
   tags:
   - gif
   - canvasDesiciones
+  - Documento
+  - obstaculos
+  - PrevioFinalIda
+  - FinalIda
+  - FinalVuelta
+  - frenteDeJugador
+  - final
+  - npc
   layers:
   - Default
   - TransparentFX
