@@ -24,15 +24,17 @@ public class MovimientoEnfermero : MonoBehaviour
     public bool espera = false;
 
 
-    int i = 0;                                       //Indice del array objetivos. 
+    public int i = 0;                                       //Indice del array objetivos. 3.8
     float velocidadRotacion = 3.8f;                  //Velocidad con la que rota el personaje
     float velocidadMovimiento = 2.2f;                //Velocidad con la que se mueve el personaje
-    Quaternion rotacion;
-    Vector3 direccion;
+    public Quaternion rotacion;
+    public Vector3 direccion;
+    Vector3 direccion2;
   
     bool rotarAlSiguiente = false;                  //Variable que indica si se puede rotar al siguiente objetivo
     bool sePuedeMover = false;                      //Variable que indica si se puede mover o no
-    bool ida;                                       //Variable que indica si esta en el camino de ida (true) o de vuelta (false)
+    public bool ida;                                       //Variable que indica si esta en el camino de ida (true) o de vuelta (false)
+    bool comportamientoUltimoTramo = false;
 
     void Start()
     {
@@ -40,17 +42,9 @@ public class MovimientoEnfermero : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         eventos = GameObject.FindGameObjectWithTag("Documento").GetComponent<disparadorDeEventos>();
         anim.SetBool("Moviendo", false);                                                                            //Comienza quieto
-        ida = true;                                                                                                 //Al comienzo estamos en el camino de ida
+        ida = true;                                                                                               //Al comienzo estamos en el camino de ida
         CalcularRotacion();                                                                                         //Calculamos la rotacion hacia el PRIMER objetivo  
-        StartCoroutine("Comienzo");
-    }
-
-    void AcomodarObjetivos()
-    {
-        GameObject[] obj = GameObject.FindGameObjectsWithTag("obstaculos");
-
-        for(int i=0; i < obj.Length ; i++)
-            obj[i].transform.position = new Vector3(obj[i].transform.position.x, 1.05f, obj[i].transform.position.z);
+        StartCoroutine("InicioDeRecorrido");
     }
 
     void FixedUpdate()                                                                                                   //Se ejecuta cada frame
@@ -59,7 +53,7 @@ public class MovimientoEnfermero : MonoBehaviour
         Movimiento();                                                                                               //Se llama constantemente a la funcion que se encarga de mover
     }
     
-    void Rotacion()
+    public void Rotacion()
     {   //Funcion que rota "suavemente" el personaje
         transform.rotation = Quaternion.Slerp(transform.rotation, rotacion, velocidadRotacion * Time.deltaTime);            //La rotacion se hace constantemente en esta linea
                                                                                                                     //con la rotacion indicada en la variable "rotacion"
@@ -79,53 +73,62 @@ public class MovimientoEnfermero : MonoBehaviour
         }
     }
 
-    void CalcularRotacion()                                                                                          //Se calcula la rotacion a realizarse                
-    {
-        Debug.Log(i);
+    public void CalcularRotacion()                                                                                          //Se calcula la rotacion a realizarse                
+    {        
         direccion = objetivos[i].position - transform.position;                                                      //Vector que marca la direccion de la rotacion
         rotacion = Quaternion.LookRotation(direccion, Vector3.up);                                                   //Rotacion que lleva hacia donde apunta el vector rotacion
     }
 
-    void Movimiento()
+    public void Movimiento()
     { 
         if (sePuedeMover)                                                                                           //Si se puede mover
         {
             anim.SetBool("Moviendo", true);                                                                         //Animacion de movimiento activada
-            MoverNPC();                                                                                             //Se mueve el personaje
-        }                                                                        
+            if(!comportamientoUltimoTramo)
+            MoverNpc(direccion);                                                                                             //Se mueve el personaje
+            else
+            MoverNpc(direccion2);
+        }
+
     }
 
-    void MoverNPC()
+    public void MoverNpc(Vector3 direccionAIr)
     {
-        rigid.AddForce(direccion.normalized * velocidadMovimiento, ForceMode.VelocityChange);                                      //Agrego una fuerza que causa el movimiento
+        rigid.AddForce(direccionAIr.normalized * velocidadMovimiento, ForceMode.VelocityChange);                                      //Agrego una fuerza que causa el movimiento
     }
 
 
-    void OnTriggerEnter(Collider col)                                                                               //Cuando activo el Trigger del objetivo
+    public void OnTriggerEnter()                                                                               //Cuando activo el Trigger del objetivo
     {                                                                                                
         PermitirRotarAlSiguiente(true);                                                                             //Cuando llego al objetivo permito que rote al siguiente objetivo
 
         if (ida)                                                                                                    //Si estoy en el camino de ida
         {
-            if (objetivos[i].tag == "puerta" || objetivos[i].tag == "frenteDeJugador")                              //Si llegue al objetivo antes de la puerta o al frente del jugador
+            if (comportamientoUltimoTramo)                                                                    //Si llegue al objetivo antes de la puerta o al frente del jugador
             {
                 PermitirMover(false);                                                                               //Desactivo el movimiento
                 anim.SetBool("Moviendo", false);                                                                    //Desactivo la animacion de movimiento
+                StartCoroutine("LlegoEnfermero");  
             }
 
-            if (objetivos[i].tag == "frenteDeJugador")                                                              //Si estoy al frente del juegador tambien 
-            {                              
-                PermitirRotarAlSiguiente(false);                                                                    //Desactivamos la rotacion al proximo objetivo
-                direccion = jugador.position - transform.position;                                                  //Calculamos la proxima rotacion a hacerse hacia el jugador (no hacia el prox objetivo)
-                rotacion = Quaternion.LookRotation(direccion, Vector3.up);
-                StartCoroutine("llego");
-                
+            if (objetivos[i].tag == "PrevioFinalIda")                                                              //Si estoy en el objetivo anterior al del final de la ida 
+            { 
+                //Se camina hacia el siguiente objetivo pero se mira al jugador                             
+                PermitirRotarAlSiguiente(false);
+                IncrementarI();
+                CalcularRotacion();
+                DecrementarI();
+                direccion2 = direccion;
+                comportamientoUltimoTramo = true;
+                direccion = jugador.position - transform.position;                                                  
+                rotacion = Quaternion.LookRotation(direccion, Vector3.up); 
+                velocidadRotacion = 3.8f;      
             }
         }
 
         if(!ida)                                                                                                     //Si estoy en el camino de vuelta
         {
-            if(objetivos[i].tag == "final")                                                                          //Si llegue al final del recorrido
+            if(objetivos[i].tag == "FinalVuelta")                                                                          //Si llegue al final del recorrido
             {
                 PermitirMover(false);                                                                                //Desactivo el movimiento
                 anim.SetBool("Moviendo", false);                                                                     //Desactivo la animacion de movimiento
@@ -134,16 +137,25 @@ public class MovimientoEnfermero : MonoBehaviour
         }
     }
 
-    void IncrementarI()
+    public void IncrementarI()
     {
         i++;
     }
 
-    void DecrementarI()
+    public void DecrementarI()
     {
         i--;
     }
+    
+    public void setRotacion(Quaternion rotacion)
+    {
+        this.rotacion = rotacion;
+    }
 
+    public bool getComportamientoUltimoTramo()
+    {
+        return comportamientoUltimoTramo;
+    }
     public void PermitirMover(bool mover)
     {
         sePuedeMover = mover;
@@ -154,31 +166,24 @@ public class MovimientoEnfermero : MonoBehaviour
         rotarAlSiguiente = rotar;        
     }
 
-    public void AbrirPuerta()                                                                                       //Metodo que se ejecuta cuando abrimos la puerta
-    {
-        puerta.SetActive(false);
-        PermitirMover(true);
-        anim.SetBool("Moviendo", true);
-    }
-
     public void Volver()                                                                                            //Metodo que se ejecuta para que vuelva a la posicion inicial
     {
+        comportamientoUltimoTramo = false;
         i = objetivos.Length - 2;                                                                                   //El indice se setea al anterior del objetivo donde esta parado el enfermero
-        Debug.Log("i al volver vale: "+ i);
         CalcularRotacion();
         ida = false;
         velocidadRotacion = 3f;
         PermitirMover(true);
     }
 
-    IEnumerator llego()
+    IEnumerator LlegoEnfermero()
     {
         eventos.LlegoDocumento();
         yield return new WaitForSeconds(1);
         eventos.SePuedeVer(true);
     }
 
-    IEnumerator Comienzo()
+    IEnumerator InicioDeRecorrido()
     {
         yield return new WaitForSeconds(0.5f);
         PermitirMover(true);
@@ -186,15 +191,7 @@ public class MovimientoEnfermero : MonoBehaviour
 
     public Transform[] returnObjetivos()
     {
-        if(objetivos == null)
-        for(int i = 0; i<3 ; i++)
-        Debug.Log("Esta vacio");
-        else 
-        Debug.Log("no esta vacio");
         return objetivos;        
     }
-    public void prueba()
-    {
-        Debug.Log("si llamo bien");
-    }
+
 }

@@ -22,7 +22,7 @@ public class disparadorDeEventos : MonoBehaviour
         mouse = this.GetComponent<seguidorDeMouse>();
         view = this.GetComponent<visorDeObjetos>();
         this.GetComponent<MeshRenderer>().enabled = false;
-        movimientoEnfermero = GameObject.FindGameObjectWithTag("NPC").GetComponent<MovimientoEnfermero>();
+        movimientoEnfermero = GameObject.FindWithTag("npc").GetComponent<MovimientoEnfermero>();
 
     }
     private void Start()
@@ -62,12 +62,12 @@ public class disparadorDeEventos : MonoBehaviour
         }*/
     }
 
-    void DejarDeMostrarDocumento(bool verDocumento){
+    void MostrarDocumento(bool verDocumento){
         this.GetComponent<MeshRenderer>().enabled = verDocumento;
     }
 
     public void LlegoDocumento(){
-        DejarDeMostrarDocumento(true);
+        MostrarDocumento(true);
     }
 
     public void SePuedeVer(bool ver){
@@ -82,7 +82,7 @@ public class disparadorDeEventos : MonoBehaviour
 
     IEnumerator EnfermeroSeVaComplemento(){
         yield return new WaitForSeconds(0.5f);  //Tiempo que se espera antes de sacar el documento de la vista
-        DejarDeMostrarDocumento(false);    
+        MostrarDocumento(false);    
         yield return new WaitForSeconds(0.5f);  //Tiempo que se espera antes de hacer volver al enfermero
         movimientoEnfermero.Volver();  
     }
