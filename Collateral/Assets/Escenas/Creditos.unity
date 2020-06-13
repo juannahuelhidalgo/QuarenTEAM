@@ -237,7 +237,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 753579506261330858, guid: b48f9c46bba02344e8e47bb4ffd03b58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 996291166244902804, guid: b48f9c46bba02344e8e47bb4ffd03b58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156040709409024418, guid: b48f9c46bba02344e8e47bb4ffd03b58,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -256,6 +266,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517548498404494103, guid: b48f9c46bba02344e8e47bb4ffd03b58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707459054716056765, guid: b48f9c46bba02344e8e47bb4ffd03b58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1900681534958677609, guid: b48f9c46bba02344e8e47bb4ffd03b58,
         type: 3}
@@ -307,6 +327,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3503512042534242873, guid: b48f9c46bba02344e8e47bb4ffd03b58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3543928939239056452, guid: b48f9c46bba02344e8e47bb4ffd03b58,
         type: 3}
       propertyPath: m_IsActive
@@ -341,6 +366,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908726254373763207, guid: b48f9c46bba02344e8e47bb4ffd03b58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4980174520839282979, guid: b48f9c46bba02344e8e47bb4ffd03b58,
         type: 3}
@@ -447,10 +477,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5956104460647826532, guid: b48f9c46bba02344e8e47bb4ffd03b58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6166458950191772556, guid: b48f9c46bba02344e8e47bb4ffd03b58,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6211789054994422313, guid: b48f9c46bba02344e8e47bb4ffd03b58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6297050969504397105, guid: b48f9c46bba02344e8e47bb4ffd03b58,
         type: 3}
@@ -511,6 +551,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ElementosCinematica
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570702977264521333, guid: b48f9c46bba02344e8e47bb4ffd03b58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7705082740597477844, guid: b48f9c46bba02344e8e47bb4ffd03b58,
         type: 3}
