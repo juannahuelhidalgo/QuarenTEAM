@@ -23,6 +23,8 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     AdministradorDocumentos admin;
     GameObject AdmJuego;
     adminJuego juego;
+    GameObject enfer;
+    disparadorDeEventos eventos;
     //----------------------------------------------------------------------------------------------------------
     //PARAMETROS NECESARIOS PARA LOS PATRONES
     static ArrayList observadores = new ArrayList();
@@ -41,6 +43,9 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         admin = admDOC.GetComponent<AdministradorDocumentos>();
         AdmJuego = GameObject.Find("adminJuegos");
         juego = AdmJuego.GetComponent<adminJuego>();
+        eventos = admDOC.GetComponent<disparadorDeEventos>();
+        enfer = GameObject.FindWithTag("npc");
+
     }
 
 
@@ -182,26 +187,32 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         Debug.Log("ENTRE A CORROBORAR LIMITESEMANAL con pacientes atendidos= " + pacientesAtendidos);
         if (pacientesAtendidos == 3)
         {
-            StartCoroutine("esperaClasica");
+            eventos.EnfermeroSeVa();            
+            StartCoroutine("PasarSemana");
+
         }
         else
         {
             admin.generarDocumento();
         }
     }
+    
 
-    //Rutina necesaria para ejecutar de manera mas fiel el juego
-    IEnumerator esperaClasica()
+    IEnumerator PasarSemana()
     {
-        bool espera = true;
-        while (espera)
-        {
-            yield return new WaitForSeconds(3);
-            juego.cargarEscenaSiguiente();
-            espera = false;
-        }
+        yield return new WaitForSeconds(3.5f);                          //Tiempo que espera el juego antes de pasar a la siguiente semana para que el enfermero se vaya de la habitacion
+        cargarEscenaSiguiente();
     }
 
+    public void cargarEscenaSiguiente()
+    {
+        juego.cargarEscenaSiguiente();
+    }
+  
+    public void SetPacientesAtendidos(int pacientesAtendidos)
+    {
+        this.pacientesAtendidos = pacientesAtendidos;
+    }
     public bool getesperando()
     {
         return espera;
