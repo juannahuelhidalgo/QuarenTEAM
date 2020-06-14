@@ -12,6 +12,7 @@ public class adminJuego : MonoBehaviour
     static int pacientesAtendidos = 0;
     public bool buildeo = false;
     public bool cerrarJ = false;
+    static int numeroSemanas = 0;
 
     void Start()
     {
@@ -31,7 +32,8 @@ public class adminJuego : MonoBehaviour
         }
         if (getNumeroEscenaActual() == 2)
         {
-            SceneManager.LoadScene(1);
+                SceneManager.LoadScene(1);
+   
         }
     }
 

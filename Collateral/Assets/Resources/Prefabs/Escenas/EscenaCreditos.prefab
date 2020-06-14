@@ -276,6 +276,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 137
       objectReference: {fileID: 0}
+    - target: {fileID: 7313181796551592964, guid: b370501002aa51b44b1ec556f7486812,
+        type: 3}
+      propertyPath: m_WaitForFirstFrame
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8177832869523317689, guid: b370501002aa51b44b1ec556f7486812,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
