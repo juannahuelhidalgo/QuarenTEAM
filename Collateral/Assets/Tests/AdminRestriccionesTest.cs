@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Tests
 {
@@ -11,40 +13,53 @@ namespace Tests
         GameObject juego;
         AdminRestricciones admin;
 
-
         //Aqui se pondra lo que se inicia/instancia con el comienzo de cada test
         [SetUp]
         public void Setup()
         {
+            SceneManager.LoadScene(0);
+            //juego = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Escenas/Juego"));
 
-            juego = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Escenas/Juego"));
-
-            admin = GameObject.Find("CanvasRestricciones").GetComponent<AdminRestricciones>();
+            //admin = GameObject.Find("CanvasRestricciones").GetComponent<AdminRestricciones>();
         }
 
         [UnityTest]
         public IEnumerator setRestriccionesTest()
         {
-            bool ResultadoTest = true;
-            int i = GameObject.Find("adminJuegos").GetComponent<adminJuego>().getSemanaActual();
-            string semanaActual = "Semana" + i;
-            // UnityEngine.Debug.Log(nombre);
-        
-            //GameObject.Find("CanvasRestricciones").GetComponent<Canvas>().enabled = true;
-            yield return new WaitForSeconds(3f);
+            //Arranco el juego desde el menu y cambio la escena como lo haria el jugador, para ir al juego
+            GameObject.Find("adminJuegos").GetComponent<adminJuego>().cargarEscenaSiguiente();
+            yield return new WaitForSeconds(1f);
             
-            admin.setRestricciones();
-            /*for(int j=1; j<5; j++)
+            bool ResultadoTest = true;
+              int i = GameObject.Find("adminJuegos").GetComponent<adminJuego>().getSemanaActual();
+              string semanaActual = "Semana" + (i+1);
+            yield return new WaitForSeconds(1f);
+            /*
+            for (int j = 1; j < 5; j++)
             {
                 string semana = "Semana" + j;
-                if (j != i)
-                    if (GameObject.Find(semana).active)
-                        ResultadoTest = false;
-            }
-            if (!GameObject.Find(semanaActual).active)
-                ResultadoTest = false;
+                if (GameObject.Find(semana) == null)
+                    Debug.Log(semana + " el gameobject no esta activo");
+                else
+                Debug.Log(GameObject.Find(semana).GetComponent<Text>().text);
+            }*/
+             for (int j = 1; j < 6; j++)
+             {
+                 string semana = "Semana" + j;
+                 
+                 if (j != (i+1))
+                 {
+                    Debug.Log(semana);
 
-            Assert.IsTrue(ResultadoTest);*/
+                    if (!(GameObject.Find(semana) == null))
+                         ResultadoTest = false;
+                 }
+             }
+                 if (GameObject.Find(semanaActual) == null)
+                    if (!GameObject.Find(semanaActual).active)
+                        ResultadoTest = false;
+                     
+             Assert.IsTrue(ResultadoTest);
             yield return null;
         }
 
