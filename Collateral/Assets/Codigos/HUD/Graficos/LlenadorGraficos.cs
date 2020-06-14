@@ -12,7 +12,7 @@ public class LlenadorGraficos : MonoBehaviour
     private void Start()
     {
         //grafico = GameObject.Find("desempenio").GetComponent<Image>();
-        grafico = gameObject.GetComponent<Image>();
+        //grafico = gameObject.GetComponent<Image>();
     }
 
     //llena el grafico, utilizando un numero entre 0 y 1, el cual representa el porcentaje de llenado. 

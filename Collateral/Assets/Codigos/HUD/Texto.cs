@@ -14,26 +14,26 @@ public class Texto : Observador
     {
         mirar = miralo;
         mirar.suscribir(this);
-        if (GameObject.Find("VistaTexto") != null)
-        {
+        //if (GameObject.Find("VistaTexto") != null)
+        //{
             vistaTexto = GameObject.Find("VistaTexto").GetComponent<Text>();
-            barra = GameObject.Find("desempenio").GetComponent<LlenadorGraficos>();
-        }
-        else
-        torta = GameObject.Find("rellenoGrafTorta").GetComponent<LlenadorGraficos>();
+          //  barra = GameObject.Find("desempenio").GetComponent<LlenadorGraficos>();
+        //}
+        //else
+        //torta = GameObject.Find("rellenoGrafTorta").GetComponent<LlenadorGraficos>();
 
     }
 
    public void mostrar(float num)
     {
-        if (GameObject.Find("VistaTexto") != null)
+       /* if (GameObject.Find("VistaTexto") != null)
         {
-            vistaTexto.text = num + "";
-            barra.llenar(num);
+          */  vistaTexto.text = num + "";
+         /*   barra.llenar(num);
         }
         else
         {
             torta.llenar(num);
-        }
+        }*/
     }
 }
