@@ -7,16 +7,33 @@ public class Texto : Observador
 {
     static Sujeto mirar;
     static Text vistaTexto;
+    static LlenadorGraficos barra;
+    static LlenadorGraficos torta;
 
     public Texto(Sujeto miralo)
     {
         mirar = miralo;
         mirar.suscribir(this);
-        vistaTexto = GameObject.Find("VistaTexto").GetComponent<Text>();
+        if (GameObject.Find("VistaTexto") != null)
+        {
+            vistaTexto = GameObject.Find("VistaTexto").GetComponent<Text>();
+            barra = GameObject.Find("desempenio").GetComponent<LlenadorGraficos>();
+        }
+        else
+        torta = GameObject.Find("rellenoGrafTorta").GetComponent<LlenadorGraficos>();
+
     }
 
    public void mostrar(float num)
     {
-        vistaTexto.text = num + "";
+        if (GameObject.Find("VistaTexto") != null)
+        {
+            vistaTexto.text = num + "";
+            barra.llenar(num);
+        }
+        else
+        {
+            torta.llenar(num);
+        }
     }
 }
