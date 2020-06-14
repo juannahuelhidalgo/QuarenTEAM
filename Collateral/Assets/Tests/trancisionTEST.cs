@@ -10,8 +10,8 @@ using UnityEngine.TestTools;
 public class transicionTEST
 {
 
-     GameObject gameGameObject;
-     menuPrinc noticias;
+    GameObject gameGameObject;
+    menuPrinc noticias;
 
 
     //Aqui se pondra lo que se inicia/instancia con el comienzo de cada test
@@ -32,17 +32,17 @@ public class transicionTEST
     {
 
         //en esta variable se almacena el valor de la primer semana 
-        int semanaAnterior = noticias.semanaActual();
+        int semanaAnterior = noticias.getSemanaActual();
         Debug.Log("SemanaAnterior: " + semanaAnterior);
 
         noticias.cambioSemana();
-        Debug.Log("semana actual de noticias: " + noticias.semanaActual());
+        Debug.Log("semana actual de noticias: " + noticias.getSemanaActual());
 
 
         //Greater da true si el primer parametro es mayor que el segundo
-        Assert.Greater(noticias.semanaActual(), semanaAnterior);
+        Assert.Greater(noticias.getSemanaActual(), semanaAnterior);
 
-        // yield return new WaitForSeconds(15);
+
 
         //return obligatorio
         yield return null;
@@ -56,47 +56,39 @@ public class transicionTEST
     {
         //Se setea una variable que nos indicara luego que ha terminado
         bool finalizo = true;
-       // yield return new WaitForSeconds(15);
+
         //se cambia la semana
         for (int i = 0; i < noticias.getFinal(); i++)
         {
             noticias.cambioSemana();
             Debug.Log("cambie la semana: " + i);
-            Debug.Log("semana actual de noticias: " + noticias.semanaActual());
+            Debug.Log("semana actual de noticias: " + noticias.getSemanaActual());
         }
         Debug.Log("sali del for ");
         //se verifica que se llegue al final de las semanas
-        if (noticias.semanaActual() == noticias.getFinal())
-          {
-              Debug.Log("entre al if ");
-              //AreEquial verifica que los parametros coincidan en su valor booleano
-              Assert.AreEqual(finalizo, noticias.finTrans());
-          }
+        if (noticias.getSemanaActual() == noticias.getFinal())
+        {
+            Debug.Log("entre al if ");
 
-        Debug.Log("semana actual de noticias: " + noticias.semanaActual());
+            Assert.AreEqual(finalizo, noticias.finTrans());
+        }
+
+        Debug.Log("semana actual de noticias: " + noticias.getSemanaActual());
         Debug.Log("final: " + noticias.getFinal());
         Debug.Log("final: " + noticias.finTrans());
-
-        //  Assert.IsTrue(noticias.finTrans());
-        // Assert.AreEqual(noticias.semanaActual(), noticias.getFinal());
 
 
         //return obligatorio
         yield return null;
     }
 
+
     [TearDown]
     public void Teardown()
     {
-        //Se destruyen los objetos creados
-      //  GameObject.Destroy(gameGameObject);
-       GameObject.Destroy(gameGameObject.gameObject);
-       // Object.Destroy(gameGameObject);
-       // Object.Destroy(gameGameObject.gameObject);
-       // GameObject.Destroy(noticias);
+        //Se destruyen los objetos 
+        GameObject.Destroy(gameGameObject.gameObject);
 
     }
 }
-
-
 
