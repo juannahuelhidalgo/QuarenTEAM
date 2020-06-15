@@ -18,7 +18,7 @@ public class Controller : MonoBehaviour
         administrador = GameObject.Find("mostrarPacientes").GetComponent<AdministradorDesiciones>(); //Se determina el sujeto del patron
         texto = new Texto(administrador); //Determino uno de los observers, en este caso el que muestra por texto.
         barra = new Barra(administrador);
-        ////torta = new Torta(administrador);
+        torta = new Torta(administrador);
         
     }
 
@@ -30,10 +30,12 @@ public class Controller : MonoBehaviour
     public void setAlgoritmoUltimaDesicion()
     {
         administrador.setEstrategia(ultima);
+        UltimoValor.ultimaDesicion = 0;
     }
 
     public void setAlgoritmoPromedio()
     {
         administrador.setEstrategia(promedio);
+        UltimoValor.ultimaDesicion = 1;
     }
 }

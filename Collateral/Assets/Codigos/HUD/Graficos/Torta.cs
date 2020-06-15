@@ -19,7 +19,9 @@ public class Torta : Observador
     public void mostrar(float llenado)
     {
         if (llenado >= 0 && llenado <= 1)
+        {
             grafico.fillAmount = llenado;
+        }
         else
             Debug.Log("Valor de llenado fuera de rango");
     }

@@ -7,8 +7,8 @@ public class Texto : Observador
 {
     static Sujeto mirar;
     static Text vistaTexto;
-    static LlenadorGraficos barra;
-    static LlenadorGraficos torta;
+   // static LlenadorGraficos barra;
+   // static LlenadorGraficos torta;
 
     public Texto(Sujeto miralo)
     {
