@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Escenas/Transicion.unity
     guid: a270f6ffb8bb4a345852de9749926d44
+  - enabled: 1
+    path: Assets/Escenas/Creditos.unity
+    guid: 4152764fe4f34b2429bf4ebf9ebe599f
   m_configObjects: {}

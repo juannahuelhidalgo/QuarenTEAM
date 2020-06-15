@@ -13,7 +13,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     private int pacientesAtendidos = 0;
     static int correctas = 0;
     static int incorrectas = 0;
-    private int desicionesTomadas;
+    private static int desicionesTomadas;
     private int notificaciones = 0;
     public bool espera = false;
     //----------------------------------------------------------------------------------------------------------
@@ -45,6 +45,10 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         juego = AdmJuego.GetComponent<adminJuego>();
         eventos = admDOC.GetComponent<disparadorDeEventos>();
         enfer = GameObject.FindWithTag("npc");
+        if(desicionesTomadas == 15)
+        {
+            juego.setCargarEscena(3);
+        }
 
     }
 
