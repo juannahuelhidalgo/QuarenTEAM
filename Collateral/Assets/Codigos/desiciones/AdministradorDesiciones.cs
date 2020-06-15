@@ -178,6 +178,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios
     public void ActualizarNumeroAMostrar()
     {
         numeroAMostrar = algoritmo.Calcular(RespTomadas, lugarArray, correctas);
+        UltimoValor.ultimo = numeroAMostrar;
     }
 
     public float getnumeroMostrado()
