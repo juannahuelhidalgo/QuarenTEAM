@@ -12,24 +12,22 @@ public class noDestruir : MonoBehaviour
     {
         nombreModelos[0] = "UltimaDesicion";
         nombreModelos[1] = "Promedio";
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            DontDestroyOnLoad(gameObject);
-            Debug.Log("Evite la destruccion del obj");
-        }
     }
-    private void Start()
-    {
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            GameObject.Find("modelo").GetComponent<Text>().text = nombreModelos[UltimoValor.ultimaDesicion];
-            gameObject.GetComponent<Canvas>().enabled = false;
-            gameObject.GetComponent<Canvas>().enabled = true;
 
-        }
-        else
+
+    private void Update()
+    {
+        if (!(SceneManager.GetActiveScene().buildIndex == 2) && (gameObject.GetComponent<Canvas>().enabled != false))
             gameObject.GetComponent<Canvas>().enabled = false;
+       
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            if (GameObject.Find("modelo").GetComponent<Text>().text == nombreModelos[UltimoValor.ultimaDesicion])
+            {
+                gameObject.GetComponent<Canvas>().enabled = false;
+                gameObject.GetComponent<Canvas>().enabled = true;
+            }
+            GameObject.Find("modelo").GetComponent<Text>().text = nombreModelos[UltimoValor.ultimaDesicion];
+        }
     }
-    
 }
