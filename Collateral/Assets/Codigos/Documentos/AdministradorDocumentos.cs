@@ -44,6 +44,7 @@ public class AdministradorDocumentos : MonoBehaviour
             generarDocumento();
     }
 
+    //El update se fija si se modifica el booleano que indica si llego el enfermero, y muestra o no muestra el documento que ve el jugador dependiendo de esto.
     private void Update()
     {
         if (LlegoEnfermero)
@@ -56,7 +57,7 @@ public class AdministradorDocumentos : MonoBehaviour
         }
     }
 
-
+    //Le asigna a la información correspondiente a el canvas que muestra la informacion de la ficha medica del paciente, cada llamada de este metodo carga la informacion de un nuevo paciente
     public void generarDocumento()
     {
         Debug.Log("Llame a generar documento.");
@@ -71,11 +72,13 @@ public class AdministradorDocumentos : MonoBehaviour
 
     }
 
+    //Este es un seter para saber si llego el enfermero
     public void setllegoEnfermero(bool llego)
     {
         LlegoEnfermero = llego;
     }
 
+    //Este metodo desactiva o activa los canvas CanvasDocumentos, CanvasRestricciones y el CanvasDesiciones
     public void mirando(bool mirar)
     {
         canvas.enabled = mirar;
