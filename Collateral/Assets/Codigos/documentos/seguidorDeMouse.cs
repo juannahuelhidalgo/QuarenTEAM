@@ -10,6 +10,7 @@ public class seguidorDeMouse : MonoBehaviour
     void Update()
     {
         //nos crea un rayo utilizando dos puntos, la posición de la camara y la posición del mouse sobre el plano que muestra la camara
+        StartCoroutine("PasarSemana");
         Ray ray = GameObject.Find("CamaraDocumentos").GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
         //RaycastHit nos permite acceder a informacion con respecto al objeto con el cual el rayo colisiono
         RaycastHit hitData;
@@ -20,6 +21,13 @@ public class seguidorDeMouse : MonoBehaviour
             objectUnderMouse = hitData.transform.name;
         }
     }
+
+    IEnumerator PasarSemana()
+    {
+
+        yield return new WaitForSeconds(10);       
+    }
+
 
     //devuelve el nombre del objeto que este debajo del mouse
     public string getObjectUnder()

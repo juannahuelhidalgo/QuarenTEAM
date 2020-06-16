@@ -111,6 +111,12 @@ public class MovimientoEnfermero : MonoBehaviour
                 StartCoroutine("LlegoEnfermero");  
             }
 
+            if(objetivos[i].tag == "cambioCamara")
+            {
+                Debug.Log("tumama me gusta");
+                GameObject.Find("MovEnfermero").GetComponent<intro>().activarTODE();
+            }
+
             if (objetivos[i].tag == "PrevioFinalIda")                                                              //Si estoy en el objetivo anterior al del final de la ida 
             { 
                 //Se camina hacia el siguiente objetivo pero se mira al jugador                             
