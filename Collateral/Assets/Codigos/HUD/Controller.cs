@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    static AdministradorDesiciones administrador;
+    static Comunicacion administrador;
     static Observador texto;
     static Observador barra;
     static Observador torta;
@@ -16,9 +16,9 @@ public class Controller : MonoBehaviour
     void Start()
     {
         administrador = GameObject.Find("mostrarPacientes").GetComponent<AdministradorDesiciones>(); //Se determina el sujeto del patron
-        texto = new Texto(administrador); //Determino uno de los observers, en este caso el que muestra por texto.
-        barra = new Barra(administrador);
-        torta = new Torta(administrador);
+        texto = new Texto((Sujeto)administrador); //Determino uno de los observers, en este caso el que muestra por texto.
+        barra = new Barra((Sujeto)administrador);
+        torta = new Torta((Sujeto)administrador);
         
     }
 

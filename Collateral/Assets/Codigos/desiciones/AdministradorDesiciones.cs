@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
 
-public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios
+public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comunicacion
 {
     //----------------------------------------------------------------------------------------------------------
     //Declarado de variables
