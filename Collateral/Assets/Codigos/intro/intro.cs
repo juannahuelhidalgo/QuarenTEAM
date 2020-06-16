@@ -27,7 +27,7 @@ public class intro : MonoBehaviour
         GameObject.Find("Documento").GetComponent<AdministradorDocumentos>().enabled = false;
        // GameObject.Find("CamaraDocumentos").GetComponent<Camera>().enabled = false;
         GameObject.Find("Controller").GetComponent<Controller>().enabled = false;
-        GameObject.Find("mostrarPacientes").GetComponent<AdministradorDesiciones>().enabled = false;
+        //GameObject.Find("mostrarPacientes").GetComponent<AdministradorDesiciones>().enabled = false;
         GameObject.Find("CanvasRestricciones").GetComponent<AdminRestricciones>().enabled = false;
         GameObject.Find("BotonDeTesteo").GetComponent<AdministradorDocumentos>().enabled = false;
         GameObject.Find("CanvasRestricciones").GetComponent<Canvas>().enabled = false;
