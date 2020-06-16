@@ -155,16 +155,19 @@ namespace Tests
             yield return null;
         }
 
-/*
+
         //7
         //el metodo chequea si el numero a mostrar es distinto despues de cada desicion
         [UnityTest]
         public IEnumerator TestDesicionesxActualizar()
         {
             //se toma el valor inicial
+            adm.Si();
+            adm.ActualizarNumeroAMostrar();
             float EstadoInicial = adm.getnumeroMostrado();
             //se toma una desicion
-            adm.Si();
+            adm.No();
+            adm.ActualizarNumeroAMostrar();
             //se toma el nuevo valor
             float EstadoFinal = adm.getnumeroMostrado();
 
@@ -173,7 +176,7 @@ namespace Tests
             yield return null;
         }
 
-
+/*
         //8
         //el metodo chequea si se ingresa correctamente al limite
         [UnityTest]
