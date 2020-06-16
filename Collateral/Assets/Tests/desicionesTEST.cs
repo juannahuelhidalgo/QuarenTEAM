@@ -176,21 +176,22 @@ namespace Tests
             yield return null;
         }
 
-/*
+
         //8
         //el metodo chequea si se ingresa correctamente al limite
         [UnityTest]
         public IEnumerator TestDesicionesxlimiteSemanal()
         {
             //se setea el numero de pacientes atendidos
-            adm.setNumeroPacientes(3);
+            adm.setNumeroPacientes(2);
+            adm.nuevaDesicion(0);
             //se comprueba si se entro a la rutina
-
-            Assert.IsTrue(adm.getesperando());
+            yield return new WaitForSeconds(2);
+            Assert.IsTrue(adm.getCambio());
 
             yield return null;
         }
-*/
+
 
         //9
         //el metodo chequea si se notifica correctamente al tomar una desicion

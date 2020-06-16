@@ -16,6 +16,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comuni
     private static int desicionesTomadas;
     private int notificaciones = 0;
     public bool espera = false;
+    public bool cambio;
     //----------------------------------------------------------------------------------------------------------
     //Objetos necesarios
     GameObject canvas;
@@ -49,6 +50,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comuni
         {
             juego.setCargarEscena(3);
         }
+        cambio = false;
 
     }
 
@@ -126,7 +128,10 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comuni
         pacientesAtendidos = num;
     }
 
-
+    public bool getCambio()
+    {
+        return cambio;
+    }
     //----------------------------------------------------------------------------------------------------------
     //METODOS NECESARIOS PARA LOS PATRONES
 
@@ -206,6 +211,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comuni
 
     IEnumerator PasarSemana()
     {
+        cambio = true;
         yield return new WaitForSeconds(3.5f);                          //Tiempo que espera el juego antes de pasar a la siguiente semana para que el enfermero se vaya de la habitacion
         cargarEscenaSiguiente();
     }
