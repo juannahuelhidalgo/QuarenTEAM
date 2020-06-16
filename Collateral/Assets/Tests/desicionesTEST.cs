@@ -200,7 +200,7 @@ namespace Tests
         //9
         //el metodo chequea si se notifica correctamente al tomar una desicion
         [UnityTest]
-        public IEnumerator TestDesicionesxnuevaDes()
+        public IEnumerator TestDesicionesxanuevaDes()
         {
             
             //se setea un tipo de desicion.
