@@ -18,6 +18,7 @@ TagManager:
   - desempenio1
   - fondoGrafTorta
   - rellenoGrafTorta
+  - control
   layers:
   - Default
   - TransparentFX

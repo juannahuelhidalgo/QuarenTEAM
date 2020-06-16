@@ -25,6 +25,8 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comuni
     GameObject AdmJuego;
     adminJuego juego;
     GameObject enfer;
+    GameObject contro;
+   
     disparadorDeEventos eventos;
     //----------------------------------------------------------------------------------------------------------
     //PARAMETROS NECESARIOS PARA LOS PATRONES
@@ -41,6 +43,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comuni
 
         canvas = GameObject.FindWithTag("canvasDesiciones");
         admDOC = GameObject.Find("Documento");
+        contro = GameObject.FindWithTag("control");
         admin = admDOC.GetComponent<AdministradorDocumentos>();
         AdmJuego = GameObject.Find("adminJuegos");
         juego = AdmJuego.GetComponent<adminJuego>();
@@ -198,6 +201,8 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comuni
         Debug.Log("ENTRE A CORROBORAR LIMITESEMANAL con pacientes atendidos= " + pacientesAtendidos);
         if (pacientesAtendidos == 3)
         {
+            contro.GetComponent<Controller>().setAlgoritmoPromedio();
+            UltimoValor.ultimaDesicion = 1;
             eventos.EnfermeroSeVa();            
             StartCoroutine("PasarSemana");
 

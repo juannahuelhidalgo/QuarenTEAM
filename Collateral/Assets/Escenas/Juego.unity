@@ -221,5 +221,10 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 0.797
       objectReference: {fileID: 0}
+    - target: {fileID: 6414285842784125774, guid: 3fc2074132215b941a2c3a8762a01dc5,
+        type: 3}
+      propertyPath: m_TagString
+      value: control
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fc2074132215b941a2c3a8762a01dc5, type: 3}
