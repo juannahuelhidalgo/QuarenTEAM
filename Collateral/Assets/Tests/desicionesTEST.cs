@@ -94,16 +94,18 @@ namespace Tests
 
             yield return null;
         }
-
+        */
         //4
         //el metodo chequea si se agregan observadores correctamente
         [UnityTest]
-        public IEnumerator TestDesicioneszObserAgregado(Observador nuevo)
+        public IEnumerator TestDesicioneszObserAgregado(/*Observador nuevo*/)
         {
+            
             //se toma el valor inicial del array que es 0
             int EstadoInicial = adm.getSuscribirTamanio();
             //se agrega un observador
-            adm.suscribir(nuevo);
+            //adm.suscribir(nuevo);
+            Observador nuevo = new Texto(adm);
             //se toma el nuevo valor del array
             int EstadoFinal = adm.getSuscribirTamanio();
 
@@ -111,11 +113,11 @@ namespace Tests
 
             yield return null;
         }
-
+      /*  
         //5
         //el metodo chequea si se quitan observadores correctamente
         [UnityTest]
-        public IEnumerator TestDesicionesObserQuitado(Observador sacar)
+        public IEnumerator TestDesicionesObserQuitado()
         {
             //se toma el valor inicial del array que es 0
             int EstadoInicial = adm.getSuscribirTamanio();
@@ -127,8 +129,8 @@ namespace Tests
             Assert.Greater(EstadoInicial, EstadoFinal);
 
             yield return null;
-        }
-       */
+        }*/
+       
 
         //6
         //el metodo chequea si se notifica a los observadores correctamente
