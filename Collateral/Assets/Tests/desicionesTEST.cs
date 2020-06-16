@@ -73,7 +73,7 @@ namespace Tests
             yield return null;
         }
 
-        /*
+        
         //3
         //el metodo chequea si se estan comparando las decisiones
         [UnityTest]
@@ -87,7 +87,7 @@ namespace Tests
 
             //supone una segunda respuesta correcta
             //llama al metodo que decide
-            adm.Si();
+            adm.No();
             //el metodo devuelve el valor de la respuesta en este caso incorrecta y por ende es 0
             int acumulada2 = adm.getCorrectas();
 
@@ -96,7 +96,7 @@ namespace Tests
 
             yield return null;
         }
-        */
+        
         //4
         //el metodo chequea si se agregan observadores correctamente
         [UnityTest]
