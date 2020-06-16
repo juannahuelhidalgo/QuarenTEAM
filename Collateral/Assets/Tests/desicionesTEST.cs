@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEngine.UI;
 
 namespace Tests
 {
@@ -17,6 +19,7 @@ namespace Tests
         AdministradorDesiciones adm;
         //  AdministradorDocumentos admin;
         Controller controlador;
+        Text  texto;
 
         //Aqui se pondra lo que se inicia/instancia con el comienzo de cada test
         [SetUp]
@@ -33,6 +36,7 @@ namespace Tests
             adm = gameGameObject.GetComponent<AdministradorDesiciones>();
             Debug.Log("instancia 3");
             controlador = adm.GetComponent<Controller>();
+            texto = GameObject.Find("VistaTexto").GetComponent<Text>();
         }
 
         //1
@@ -198,17 +202,20 @@ namespace Tests
         [UnityTest]
         public IEnumerator TestDesicionesxnuevaDes()
         {
-
+            
             //se setea un tipo de desicion.
             adm.nuevaDesicion(0);
             //se chequea si ha entrado al metodo
-            float EstadoInicial = adm.getnumeroMostrado();
+            //float EstadoInicial = adm.getnumeroMostrado();
+            string primernumero = texto.text;
             //se setea un tipo de desicion.
             adm.nuevaDesicion(1);
-            float EstadoFinal = adm.getnumeroMostrado();
+            //float EstadoFinal = adm.getnumeroMostrado();
+            string segundonumero = texto.text;
+            
 
 
-            Assert.AreNotEqual(EstadoFinal, EstadoInicial);
+            Assert.AreNotEqual(primernumero,segundonumero);
 
             yield return null;
         }
