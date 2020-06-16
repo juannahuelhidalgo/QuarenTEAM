@@ -14,7 +14,7 @@ public class MovimientoEnfermero : MonoBehaviour
 {
     Animator anim;
     Rigidbody rigid;
-    disparadorDeEventos eventos;
+    ManejoDeEventos eventos;
     public GameObject puerta;
     public Transform[] objetivos;
     public Transform jugador;

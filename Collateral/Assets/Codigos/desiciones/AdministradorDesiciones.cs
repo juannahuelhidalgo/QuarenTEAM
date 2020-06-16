@@ -28,7 +28,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios
     //----------------------------------------------------------------------------------------------------------
     //PARAMETROS NECESARIOS PARA LOS PATRONES
     static ArrayList observadores = new ArrayList();
-    static Algoritmo algoritmo = new AlgoritmoUltimaDesicion();
+    static Algoritmo algoritmo = new AlgoritmoUltimaDecision();
     static float numeroAMostrar = 0;
     public bool pacientesSemanalesAlcanzados = false;
     //-----------------------------------------------------------------------------------------------------------

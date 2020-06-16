@@ -8,7 +8,7 @@ public class Controller : MonoBehaviour
     static Observador texto;
     static Observador barra;
     static Observador torta;
-    static AlgoritmoUltimaDesicion ultima = new AlgoritmoUltimaDesicion();
+    static AlgoritmoUltimaDecision ultima = new AlgoritmoUltimaDecision();
     static AlgoritmoPromedio promedio = new AlgoritmoPromedio();
     // Start is called before the first frame update
 

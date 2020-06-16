@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class disparadorDeEventos : MonoBehaviour
+public class disparadorDeEventos : MonoBehaviour, ManejoDeEventos
 {
     private float timer;
     //me permite saber si estoy viendo el documento
