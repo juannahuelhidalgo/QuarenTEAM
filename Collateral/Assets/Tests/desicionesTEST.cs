@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Tests
         GameObject DOM;
         AdministradorDesiciones adm;
         //  AdministradorDocumentos admin;
+        Controller controlador;
 
         //Aqui se pondra lo que se inicia/instancia con el comienzo de cada test
         [SetUp]
@@ -30,7 +32,7 @@ namespace Tests
             Debug.Log("instancia 2");
             adm = gameGameObject.GetComponent<AdministradorDesiciones>();
             Debug.Log("instancia 3");
-
+            controlador = adm.GetComponent<Controller>();
         }
 
         //1
@@ -113,23 +115,27 @@ namespace Tests
 
             yield return null;
         }
-      /*  
+        
         //5
         //el metodo chequea si se quitan observadores correctamente
         [UnityTest]
         public IEnumerator TestDesicionesObserQuitado()
         {
+           
             //se toma el valor inicial del array que es 0
+            Observador nuevo = new Texto(adm);
             int EstadoInicial = adm.getSuscribirTamanio();
             //se agrega un observador
-            adm.desuscribir(sacar);
+            yield return new WaitForSeconds(2);
+            adm.desuscribir(nuevo);
             //se toma el nuevo valor del array
+            yield return new WaitForSeconds(2);
             int EstadoFinal = adm.getSuscribirTamanio();
 
             Assert.Greater(EstadoInicial, EstadoFinal);
 
             yield return null;
-        }*/
+        }
        
 
         //6

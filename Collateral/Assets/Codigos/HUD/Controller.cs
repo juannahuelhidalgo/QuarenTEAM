@@ -38,4 +38,9 @@ public class Controller : MonoBehaviour
         administrador.setEstrategia(promedio);
         UltimoValor.ultimaDesicion = 1;
     }
+
+    public Observador getTexto()
+    {
+        return texto;
+    }
 }

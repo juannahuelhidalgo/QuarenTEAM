@@ -145,10 +145,11 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comuni
     //Metodo desuscribir el cual se encarga de sacar un observador de la lista de observadores
     public void desuscribir(Observador sacar)
     {
+
         int numSac = observadores.IndexOf(sacar);
         if (numSac >= 0)
         {
-            observadores.Remove(numSac);
+            observadores.Remove(sacar);
         }
 
     }
