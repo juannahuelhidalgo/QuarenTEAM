@@ -14,7 +14,7 @@ public class MovimientoEnfermero : MonoBehaviour
 {
     Animator anim;
     Rigidbody rigid;
-    disparadorDeEventos eventos;
+    ManejoDeEventos eventos;
     public GameObject puerta;
     public Transform[] objetivos;
     public Transform jugador;
@@ -109,6 +109,12 @@ public class MovimientoEnfermero : MonoBehaviour
                 PermitirMover(false);                                                                               //Desactivo el movimiento
                 anim.SetBool("Moviendo", false);                                                                    //Desactivo la animacion de movimiento
                 StartCoroutine("LlegoEnfermero");  
+            }
+
+            if(objetivos[i].tag == "cambioCamara")
+            {
+                Debug.Log("tumama me gusta");
+                GameObject.Find("MovEnfermero").GetComponent<intro>().activarTODE();
             }
 
             if (objetivos[i].tag == "PrevioFinalIda")                                                              //Si estoy en el objetivo anterior al del final de la ida 

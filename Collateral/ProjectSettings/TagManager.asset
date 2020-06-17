@@ -18,6 +18,9 @@ TagManager:
   - desempenio1
   - fondoGrafTorta
   - rellenoGrafTorta
+  - control
+  - camaraIntro
+  - cambioCamara
   layers:
   - Default
   - TransparentFX
