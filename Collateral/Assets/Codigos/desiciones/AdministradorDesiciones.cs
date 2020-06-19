@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
 
-public class AdministradorDesiciones : MonoBehaviour, Sujeto
+public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comunicacion
 {
     //----------------------------------------------------------------------------------------------------------
     //Declarado de variables
@@ -16,6 +16,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     private static int desicionesTomadas;
     private int notificaciones = 0;
     public bool espera = false;
+    public bool cambio;
     //----------------------------------------------------------------------------------------------------------
     //Objetos necesarios
     GameObject canvas;
@@ -24,11 +25,13 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     GameObject AdmJuego;
     adminJuego juego;
     GameObject enfer;
+    GameObject contro;
+   
     disparadorDeEventos eventos;
     //----------------------------------------------------------------------------------------------------------
     //PARAMETROS NECESARIOS PARA LOS PATRONES
     static ArrayList observadores = new ArrayList();
-    static Algoritmo algoritmo = new AlgoritmoUltimaDesicion();
+    static Algoritmo algoritmo = new AlgoritmoUltimaDecision();
     static float numeroAMostrar = 0;
     public bool pacientesSemanalesAlcanzados = false;
     //-----------------------------------------------------------------------------------------------------------
@@ -40,6 +43,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
 
         canvas = GameObject.FindWithTag("canvasDesiciones");
         admDOC = GameObject.Find("Documento");
+        contro = GameObject.FindWithTag("control");
         admin = admDOC.GetComponent<AdministradorDocumentos>();
         AdmJuego = GameObject.Find("adminJuegos");
         juego = AdmJuego.GetComponent<adminJuego>();
@@ -49,6 +53,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         {
             juego.setCargarEscena(3);
         }
+        cambio = false;
 
     }
 
@@ -126,7 +131,10 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         pacientesAtendidos = num;
     }
 
-
+    public bool getCambio()
+    {
+        return cambio;
+    }
     //----------------------------------------------------------------------------------------------------------
     //METODOS NECESARIOS PARA LOS PATRONES
 
@@ -145,10 +153,11 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
     //Metodo desuscribir el cual se encarga de sacar un observador de la lista de observadores
     public void desuscribir(Observador sacar)
     {
+
         int numSac = observadores.IndexOf(sacar);
         if (numSac >= 0)
         {
-            observadores.Remove(numSac);
+            observadores.Remove(sacar);
         }
 
     }
@@ -192,6 +201,8 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
         Debug.Log("ENTRE A CORROBORAR LIMITESEMANAL con pacientes atendidos= " + pacientesAtendidos);
         if (pacientesAtendidos == 3)
         {
+            contro.GetComponent<Controller>().setAlgoritmoPromedio();
+            UltimoValor.ultimaDesicion = 1;
             eventos.EnfermeroSeVa();            
             StartCoroutine("PasarSemana");
 
@@ -205,6 +216,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto
 
     IEnumerator PasarSemana()
     {
+        cambio = true;
         yield return new WaitForSeconds(3.5f);                          //Tiempo que espera el juego antes de pasar a la siguiente semana para que el enfermero se vaya de la habitacion
         cargarEscenaSiguiente();
     }

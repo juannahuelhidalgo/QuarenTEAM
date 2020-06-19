@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Collateral/Assets/Escenas/Cinematicas.unity.meta
 guid: f8539458a0b34b144ba37f0631d82f0a
+=======
+guid: cf777f8689eddb54d8db05d334f2c12b
+folderAsset: yes
+>>>>>>> master:Collateral/Assets/Resources/Prefabs/cinematicas.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

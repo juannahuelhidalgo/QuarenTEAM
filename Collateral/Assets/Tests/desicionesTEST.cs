@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEngine.UI;
 
 namespace Tests
 {
@@ -15,6 +18,8 @@ namespace Tests
         GameObject DOM;
         AdministradorDesiciones adm;
         //  AdministradorDocumentos admin;
+        Controller controlador;
+        Text  texto;
 
         //Aqui se pondra lo que se inicia/instancia con el comienzo de cada test
         [SetUp]
@@ -30,7 +35,8 @@ namespace Tests
             Debug.Log("instancia 2");
             adm = gameGameObject.GetComponent<AdministradorDesiciones>();
             Debug.Log("instancia 3");
-
+            controlador = adm.GetComponent<Controller>();
+            texto = GameObject.Find("VistaTexto").GetComponent<Text>();
         }
 
         //1
@@ -71,7 +77,7 @@ namespace Tests
             yield return null;
         }
 
-        /*
+        
         //3
         //el metodo chequea si se estan comparando las decisiones
         [UnityTest]
@@ -85,7 +91,7 @@ namespace Tests
 
             //supone una segunda respuesta correcta
             //llama al metodo que decide
-            adm.Si();
+            adm.No();
             //el metodo devuelve el valor de la respuesta en este caso incorrecta y por ende es 0
             int acumulada2 = adm.getCorrectas();
 
@@ -94,16 +100,18 @@ namespace Tests
 
             yield return null;
         }
-
+        
         //4
         //el metodo chequea si se agregan observadores correctamente
         [UnityTest]
-        public IEnumerator TestDesicioneszObserAgregado(Observador nuevo)
+        public IEnumerator TestDesicioneszObserAgregado(/*Observador nuevo*/)
         {
+            
             //se toma el valor inicial del array que es 0
             int EstadoInicial = adm.getSuscribirTamanio();
             //se agrega un observador
-            adm.suscribir(nuevo);
+            //adm.suscribir(nuevo);
+            Observador nuevo = new Texto(adm);
             //se toma el nuevo valor del array
             int EstadoFinal = adm.getSuscribirTamanio();
 
@@ -111,24 +119,28 @@ namespace Tests
 
             yield return null;
         }
-
+        
         //5
         //el metodo chequea si se quitan observadores correctamente
         [UnityTest]
-        public IEnumerator TestDesicionesObserQuitado(Observador sacar)
+        public IEnumerator TestDesicionesObserQuitado()
         {
+           
             //se toma el valor inicial del array que es 0
+            Observador nuevo = new Texto(adm);
             int EstadoInicial = adm.getSuscribirTamanio();
             //se agrega un observador
-            adm.desuscribir(sacar);
+            yield return new WaitForSeconds(2);
+            adm.desuscribir(nuevo);
             //se toma el nuevo valor del array
+            yield return new WaitForSeconds(2);
             int EstadoFinal = adm.getSuscribirTamanio();
 
             Assert.Greater(EstadoInicial, EstadoFinal);
 
             yield return null;
         }
-       */
+       
 
         //6
         //el metodo chequea si se notifica a los observadores correctamente
@@ -147,16 +159,19 @@ namespace Tests
             yield return null;
         }
 
-/*
+
         //7
         //el metodo chequea si el numero a mostrar es distinto despues de cada desicion
         [UnityTest]
         public IEnumerator TestDesicionesxActualizar()
         {
             //se toma el valor inicial
+            adm.Si();
+            adm.ActualizarNumeroAMostrar();
             float EstadoInicial = adm.getnumeroMostrado();
             //se toma una desicion
-            adm.Si();
+            adm.No();
+            adm.ActualizarNumeroAMostrar();
             //se toma el nuevo valor
             float EstadoFinal = adm.getnumeroMostrado();
 
@@ -172,31 +187,35 @@ namespace Tests
         public IEnumerator TestDesicionesxlimiteSemanal()
         {
             //se setea el numero de pacientes atendidos
-            adm.setNumeroPacientes(3);
+            adm.setNumeroPacientes(2);
+            adm.nuevaDesicion(0);
             //se comprueba si se entro a la rutina
-
-            Assert.IsTrue(adm.getesperando());
+            yield return new WaitForSeconds(2);
+            Assert.IsTrue(adm.getCambio());
 
             yield return null;
         }
-*/
+
 
         //9
         //el metodo chequea si se notifica correctamente al tomar una desicion
         [UnityTest]
-        public IEnumerator TestDesicionesxnuevaDes()
+        public IEnumerator TestDesicionesxanuevaDes()
         {
-
+            
             //se setea un tipo de desicion.
             adm.nuevaDesicion(0);
             //se chequea si ha entrado al metodo
-            float EstadoInicial = adm.getnumeroMostrado();
+            //float EstadoInicial = adm.getnumeroMostrado();
+            string primernumero = texto.text;
             //se setea un tipo de desicion.
             adm.nuevaDesicion(1);
-            float EstadoFinal = adm.getnumeroMostrado();
+            //float EstadoFinal = adm.getnumeroMostrado();
+            string segundonumero = texto.text;
+            
 
 
-            Assert.AreNotEqual(EstadoFinal, EstadoInicial);
+            Assert.AreNotEqual(primernumero,segundonumero);
 
             yield return null;
         }

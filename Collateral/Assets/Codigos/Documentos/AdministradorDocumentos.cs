@@ -21,6 +21,7 @@ public class AdministradorDocumentos : MonoBehaviour
     Canvas canvas;
     Canvas canvasrestricciones;
     Canvas desiciones;
+    Canvas barra;
  
 
      void Awake()
@@ -36,6 +37,8 @@ public class AdministradorDocumentos : MonoBehaviour
         canvas = GameObject.Find("CanvasDocumentos").GetComponent<Canvas>();
         canvasrestricciones = GameObject.Find("CanvasRestricciones").GetComponent<Canvas>();
         desiciones = GameObject.Find("CanvasDesicion").GetComponent<Canvas>();
+        if (GameObject.Find("CanvasBarraDesempenio") != null)
+        barra = GameObject.Find("CanvasBarraDesempenio").GetComponent<Canvas>();
     }
 
     private void Start()
@@ -84,6 +87,8 @@ public class AdministradorDocumentos : MonoBehaviour
         canvas.enabled = mirar;
         canvasrestricciones.enabled = mirar;
         desiciones.enabled = mirar;
+        if (GameObject.Find("CanvasBarraDesempenio") != null)
+            barra.enabled = mirar;
     }
 
 }

@@ -20,7 +20,7 @@ public class noDestruir : MonoBehaviour
         if (!(SceneManager.GetActiveScene().buildIndex == 2) && (gameObject.GetComponent<Canvas>().enabled != false))
             gameObject.GetComponent<Canvas>().enabled = false;
        
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 3)
         {
             if (GameObject.Find("modelo").GetComponent<Text>().text == nombreModelos[UltimoValor.ultimaDesicion])
             {
