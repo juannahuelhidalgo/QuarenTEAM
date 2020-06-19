@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
 
-public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comunicacion
+public class AdministradorDesiciones : MonoBehaviour, Sujeto, Comunicacion
 {
     //----------------------------------------------------------------------------------------------------------
     //Declarado de variables
@@ -21,13 +21,13 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comuni
     //Objetos necesarios
     GameObject canvas;
     GameObject admDOC;
-    AdministradorDocumentos admin;
+    Acceso admin;
     GameObject AdmJuego;
     adminJuego juego;
     GameObject enfer;
     GameObject contro;
    
-    disparadorDeEventos eventos;
+    Acceso eventos;
     //----------------------------------------------------------------------------------------------------------
     //PARAMETROS NECESARIOS PARA LOS PATRONES
     static ArrayList observadores = new ArrayList();

@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
 
-public class AdministradorDocumentos : MonoBehaviour
+public class AdministradorDocumentos : MonoBehaviour, Acceso
 {
     Text nombre; //Nombre, Edad, Nacionalidad, Enfermedades,Sexo,Viajo
     Text edad;
@@ -57,6 +57,8 @@ public class AdministradorDocumentos : MonoBehaviour
         }
     }
 
+    public void EnfermeroSeVa()
+    { }
     //Le asigna a la información correspondiente a el canvas que muestra la informacion de la ficha medica del paciente, cada llamada de este metodo carga la informacion de un nuevo paciente
     public void generarDocumento()
     {
