@@ -12,6 +12,7 @@ public class Barra : Observador
     {
         mirar = miralo;
         mirar.suscribir(this);
+        if (GameObject.FindWithTag("desempenio") != null)
         grafico = GameObject.FindWithTag("desempenio").GetComponent<Image>();
 
     }
