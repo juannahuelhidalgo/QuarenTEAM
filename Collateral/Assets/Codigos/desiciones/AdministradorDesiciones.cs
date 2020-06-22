@@ -97,6 +97,15 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Comunicacion
         else { incorrectas++; Debug.Log("incorrecta"); }
     }
 
+    //metodo de reseteo para los tests
+    public void setearValoresOriginales()
+    {
+         lugarArray = -1;
+         pacientesAtendidos = 0;
+         correctas = 0;
+         incorrectas = 0;
+         numeroAMostrar = 0;
+    }
 
     //devuelve el valor de la desicion tomada
     int getDesicionTomada(int lugar)

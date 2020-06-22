@@ -18,12 +18,14 @@ namespace TestsDeIntegracion
         {
             juego = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Escenas/Juego"));
             //SceneManager.LoadScene(1);
-            controlador = GameObject.FindWithTag("control");
+            
         }
 
         [UnityTest]
         public IEnumerator vistaUltimaDecisionTextoTest()
         {
+            GameObject.Find("mostrarPacientes").GetComponent<AdministradorDesiciones>().setearValoresOriginales();
+            controlador = GameObject.FindWithTag("control");
             controlador.GetComponent<Controller> ().TomarDesicion(0);
             Texto tex = (Texto)controlador.GetComponent<Controller>().getTexto();
             string textomostrado = tex.getTextoAMostrar();
@@ -35,6 +37,7 @@ namespace TestsDeIntegracion
         [UnityTest]
         public IEnumerator vistaUltimaDecisionBarraTest()
         {
+            controlador = GameObject.FindWithTag("control");
             controlador.GetComponent <Controller>().TomarDesicion(0);
             Barra bar = (Barra)controlador.GetComponent<Controller>().getBarra();
             float llenar = bar.getNumeroALlenar();

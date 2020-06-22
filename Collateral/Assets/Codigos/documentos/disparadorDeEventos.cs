@@ -64,7 +64,7 @@ public class disparadorDeEventos : MonoBehaviour, ManejoDeEventos, Acceso
     public void generarDocumento()
     {
     }
-    void MostrarDocumento(bool verDocumento){
+    public void MostrarDocumento(bool verDocumento){
         this.GetComponent<MeshRenderer>().enabled = verDocumento;
     }
 
