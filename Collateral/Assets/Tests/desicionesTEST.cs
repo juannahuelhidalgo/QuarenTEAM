@@ -45,14 +45,14 @@ namespace Tests
         public IEnumerator TestDesicionesSi()
         {
             //supone una primer respuesta correcta
-            int correcta = 1;
+            int correcta = adm.getCorrectas();
             //llama al metodo que decide
             adm.Si();
             //el metodo devuelve el valor de la respuesta en este caso incorrecta y por ende es 0
             int acumulada = adm.getCorrectas();
 
             //si el primer valor es mayor al segundo sera verdadero
-            Assert.AreEqual(correcta, acumulada);
+            Assert.Greater( acumulada, correcta);
 
             // yield return new WaitForSeconds (20);
             yield return null;
@@ -64,14 +64,14 @@ namespace Tests
         public IEnumerator TestDesicionesNo()
         {
             //supone una primer respuesta incorrecta
-            int incorrecta = 1;
+            int incorrecta = adm.getIncorrectas();
             //llama al metodo que decide
             adm.No();
             //el metodo devuelve el valor de la respuesta en este caso correcta y por ende es 1
-            int acumulada = adm.getCorrectas();
+            int acumulada = adm.getIncorrectas();
 
             //si ambos son 0 sera verdadero
-            Assert.AreEqual(incorrecta, acumulada);
+            Assert.Greater( acumulada, incorrecta);
 
             // yield return new WaitForSeconds (20);
             yield return null;
