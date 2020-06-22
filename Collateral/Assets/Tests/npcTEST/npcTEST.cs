@@ -4,10 +4,10 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace npcTEST
+namespace TestsDeIntegracion
 {
     [TestFixture]
-    public class npc_SanityTest
+    public class npc_SmokeTest
     {
         GameObject juego;
         GameObject npc;
@@ -30,15 +30,15 @@ namespace npcTEST
         {
             bool FinalIda = false;
 
-            for(int i = 0; i < objetivos.Length; i++)
+            for (int i = 0; i < objetivos.Length; i++)
             {
-                if(objetivos[i].tag == "FinalIda"){
+                if (objetivos[i].tag == "FinalIda") {
                     FinalIda = true;
                 }
             }
 
             yield return new WaitForSeconds(0.1f);
-            Assert.IsTrue(FinalIda);       
+            Assert.IsTrue(FinalIda);
             yield return null;
         }
 
@@ -47,45 +47,45 @@ namespace npcTEST
         {
             bool PrevioFinalIda = false;
 
-            for(int i = 0; i < objetivos.Length; i++)
+            for (int i = 0; i < objetivos.Length; i++)
             {
-                if(objetivos[i].tag == "PrevioFinalIda"){
+                if (objetivos[i].tag == "PrevioFinalIda") {
                     PrevioFinalIda = true;
                 }
             }
             yield return new WaitForSeconds(0.1f);
-            Assert.IsTrue(PrevioFinalIda);            
+            Assert.IsTrue(PrevioFinalIda);
             yield return null;
         }
 
-                [UnityTest]
+        [UnityTest]
         public IEnumerator TagFinalVueltaColocado()
         {
             bool FinalVuelta = false;
 
-            for(int i = 0; i < objetivos.Length; i++)
+            for (int i = 0; i < objetivos.Length; i++)
             {
-                if(objetivos[i].tag == "FinalVuelta"){
+                if (objetivos[i].tag == "FinalVuelta") {
                     FinalVuelta = true;
                 }
             }
 
             yield return new WaitForSeconds(0.1f);
-            Assert.IsTrue(FinalVuelta);       
+            Assert.IsTrue(FinalVuelta);
             yield return null;
         }
-        
+
         //hacer que verifique cuando colisione con el tag frente jugador
 
         [UnityTest]
         public IEnumerator EnfermeroSeMueveHastaFrenteDelJugador_Test()
         {
-                        
+
             yield return new WaitForSeconds(5);
             bool llegoAlFinal = movimientoEnfermero.getComportamientoUltimoTramo();
 
             Assert.IsTrue(llegoAlFinal);
-            
+
             yield return null;
         }
 
@@ -93,13 +93,17 @@ namespace npcTEST
         public void Teardown()
         {
             Debug.Log("aca");
-            Object.Destroy(juego.gameObject);  
+            Object.Destroy(juego.gameObject);
         }
-        
-    }
 
-     [TestFixture]
-    public class npc_UnitTest
+    }
+}
+
+namespace Tests
+{
+
+    [TestFixture]
+    public class Anpc_UnitTest
     {
         MovimientoEnfermero movimientoEnfermero;
         GameObject npc;
@@ -127,8 +131,8 @@ namespace npcTEST
 
          [UnityTest]
         public IEnumerator CalcularRotacion_Test()
-        {      
-            
+        {
+
             Vector3 dir = objetivos[0].position - movimientoEnfermero.transform.position;                                                      //Vector que marca la direccion de la rotacion
             dir.y = movimientoEnfermero.direccion.y;
             Quaternion rot = Quaternion.LookRotation(dir, Vector3.up);  
