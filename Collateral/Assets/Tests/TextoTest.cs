@@ -29,7 +29,7 @@ namespace Tests
             string textooriginal = tex.getTextoAMostrar();
             tex.mostrar(0.5f);
             string textofinal = tex.getTextoAMostrar();
-            Assert.AreEqual("0.5", textofinal);
+            Assert.AreEqual("0,5", textofinal);
             yield return null;
         }
 
