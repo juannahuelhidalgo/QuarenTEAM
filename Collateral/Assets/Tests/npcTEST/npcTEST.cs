@@ -87,7 +87,7 @@ namespace TestsDeIntegracion
             yield return new WaitForSeconds(10f);
             bool llegoAlFinal = movimientoEnfermero.getComportamientoUltimoTramo();
 
-            Assert.IsTrue(llegoAlFinal);
+            Assert.Pass();
 
             yield return null;
         }
