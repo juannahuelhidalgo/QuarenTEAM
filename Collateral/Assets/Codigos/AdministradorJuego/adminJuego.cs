@@ -4,7 +4,7 @@ using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class adminJuego : MonoBehaviour
+public class adminJuego : MonoBehaviour, Escenarios
 {
     int EscenaActual;
     public static int semanaActual = -1;

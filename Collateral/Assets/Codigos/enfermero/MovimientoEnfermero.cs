@@ -10,7 +10,7 @@ using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class MovimientoEnfermero : MonoBehaviour
+public class MovimientoEnfermero : MonoBehaviour, NPC
 {
     Animator anim;
     Rigidbody rigid;
