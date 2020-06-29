@@ -1,14 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
 
-public class AdministradorDesiciones : MonoBehaviour, Sujeto, Comunicacion
+public class AdministradorDesiciones : MonoBehaviour, Sujeto, Escenarios, Comunicacion
 {
     //----------------------------------------------------------------------------------------------------------
     //Declarado de variables
     int[] RespEsperadas = new int[] { 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1 };
-    static int[] RespTomadas = new int[15];
+    public static int[] RespTomadas = new int[15];
     static int lugarArray = -1;
     private int pacientesAtendidos = 0;
     static int correctas = 0;
@@ -17,17 +18,18 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Comunicacion
     private int notificaciones = 0;
     public bool espera = false;
     public bool cambio;
+
     //----------------------------------------------------------------------------------------------------------
     //Objetos necesarios
     GameObject canvas;
     GameObject admDOC;
-    Acceso admin;
+    AdministradorDocumentos admin;
     GameObject AdmJuego;
     adminJuego juego;
     GameObject enfer;
     GameObject contro;
    
-    Acceso eventos;
+    disparadorDeEventos eventos;
     //----------------------------------------------------------------------------------------------------------
     //PARAMETROS NECESARIOS PARA LOS PATRONES
     static ArrayList observadores = new ArrayList();
@@ -51,7 +53,7 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Comunicacion
         enfer = GameObject.FindWithTag("npc");
         if(desicionesTomadas == 15)
         {
-            juego.setCargarEscena(3);
+            juego.setCargarEscena(4);
         }
         cambio = false;
 
@@ -97,14 +99,10 @@ public class AdministradorDesiciones : MonoBehaviour, Sujeto, Comunicacion
         else { incorrectas++; Debug.Log("incorrecta"); }
     }
 
-    //metodo de reseteo para los tests
-    public void setearValoresOriginales()
+
+    public int[] array()
     {
-         lugarArray = -1;
-         pacientesAtendidos = 0;
-         correctas = 0;
-         incorrectas = 0;
-         numeroAMostrar = 0;
+        return RespTomadas;
     }
 
     //devuelve el valor de la desicion tomada

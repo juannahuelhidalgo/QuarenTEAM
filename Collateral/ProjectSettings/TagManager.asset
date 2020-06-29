@@ -21,6 +21,9 @@ TagManager:
   - control
   - camaraIntro
   - cambioCamara
+  - camarauno
+  - camaratres
+  - camarados
   layers:
   - Default
   - TransparentFX

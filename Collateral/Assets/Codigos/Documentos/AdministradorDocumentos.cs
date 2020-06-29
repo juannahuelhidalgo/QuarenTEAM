@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
 
-public class AdministradorDocumentos : MonoBehaviour, Acceso
+public class AdministradorDocumentos : MonoBehaviour
 {
     Text nombre; //Nombre, Edad, Nacionalidad, Enfermedades,Sexo,Viajo
     Text edad;
@@ -15,6 +15,7 @@ public class AdministradorDocumentos : MonoBehaviour, Acceso
     Text enfermedades;
     Text sexo;
     Text viajo;
+    Text antecedentes;
     datosPacientes data;
     public bool LlegoEnfermero = true;
     GameObject doc;
@@ -31,6 +32,7 @@ public class AdministradorDocumentos : MonoBehaviour, Acceso
         nacionalidad = GameObject.Find("RespNacionalidad").GetComponent<Text>();
         enfermedades = GameObject.Find("RespEnfermedad").GetComponent<Text>();
         sexo = GameObject.Find("RespSexo").GetComponent<Text>();
+        antecedentes = GameObject.Find("RespAntecedentes").GetComponent<Text>();
         viajo = GameObject.Find("RespViajo").GetComponent<Text>();
         data = GameObject.Find("Documento").GetComponent<datosPacientes>();
         doc = GameObject.FindWithTag("Documento");
@@ -60,13 +62,11 @@ public class AdministradorDocumentos : MonoBehaviour, Acceso
         }
     }
 
-    public void EnfermeroSeVa()
-    { }
     //Le asigna a la información correspondiente a el canvas que muestra la informacion de la ficha medica del paciente, cada llamada de este metodo carga la informacion de un nuevo paciente
     public void generarDocumento()
     {
         Debug.Log("Llame a generar documento.");
-        string[] paciente = new string[6];
+        string[] paciente = new string[7];
         paciente = data.generatePatient();
         nombre.text = paciente[0];
         edad.text = paciente[1];
@@ -74,6 +74,7 @@ public class AdministradorDocumentos : MonoBehaviour, Acceso
         enfermedades.text = paciente[3];
         sexo.text = paciente[4];
         viajo.text = paciente[5];
+        antecedentes.text = paciente[6];
 
     }
 

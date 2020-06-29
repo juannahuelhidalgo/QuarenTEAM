@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class disparadorDeEventos : MonoBehaviour, ManejoDeEventos, Acceso
+public class disparadorDeEventos : MonoBehaviour, ManejoDeEventos
 {
     private float timer;
     //me permite saber si estoy viendo el documento
@@ -11,7 +11,7 @@ public class disparadorDeEventos : MonoBehaviour, ManejoDeEventos, Acceso
     private seguidorDeMouse mouse;
     //Me va a permitir setear la posición de la camara
     private visorDeObjetos view;
-    private NPC movimientoEnfermero;
+    private MovimientoEnfermero movimientoEnfermero;
     
     public bool llegoDocumento = false;
     public bool sePuedeVer = false;
@@ -61,10 +61,8 @@ public class disparadorDeEventos : MonoBehaviour, ManejoDeEventos, Acceso
             timer = 0.0f;
         }*/
     }
-    public void generarDocumento()
-    {
-    }
-    public void MostrarDocumento(bool verDocumento){
+
+    void MostrarDocumento(bool verDocumento){
         this.GetComponent<MeshRenderer>().enabled = verDocumento;
     }
 

@@ -4,7 +4,7 @@ using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class adminJuego : MonoBehaviour, Escenarios
+public class adminJuego : MonoBehaviour
 {
     int EscenaActual;
     public static int semanaActual = -1;
@@ -32,7 +32,17 @@ public class adminJuego : MonoBehaviour, Escenarios
         }
         if (getNumeroEscenaActual() == 2)
         {
-                SceneManager.LoadScene(1);
+            SceneManager.LoadScene(3);
+
+        }
+        if (getNumeroEscenaActual() == 3)
+        {
+            SceneManager.LoadScene(1);
+
+        }
+        if (getNumeroEscenaActual() == 3 && semanaActual == 5)
+        {
+                SceneManager.LoadScene(4);
    
         }
     }
